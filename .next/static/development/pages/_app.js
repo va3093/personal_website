@@ -14516,7 +14516,7 @@ var theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["create
   },
   palette: {
     primary: {
-      main: "#FC6670"
+      main: "#FF5468"
     },
     secondary: {
       main: "#19857b"
