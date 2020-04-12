@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { DARK_NAVY } from "../src/theme";
 import ProfilePic from "../components/ProfilePic";
 import Dot from "../components/Utils/Dot";
+import Menu from "../components/Navigation/Menu";
+import PageWithNavBar from "../components/Navigation/PageWithNavBar";
 
 const useStyles = makeStyles(() => ({
   page: {
@@ -64,7 +66,7 @@ export default function Index() {
   const classes = useStyles();
 
   return (
-    <div className={classes.page}>
+    <PageWithNavBar>
       <Box pt={8} pb={16} display="flex" justifyContent="center">
         <ProfilePic />
       </Box>
@@ -107,6 +109,6 @@ export default function Index() {
           Download CV
         </Button>
       </Box>
-    </div>
+    </PageWithNavBar>
   );
 }
