@@ -236,7 +236,7 @@ const theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["crea
     }
   }
 });
-/* harmony default export */ __webpack_exports__["default"] = (theme);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["responsiveFontSizes"])(theme));
 
 /***/ }),
 

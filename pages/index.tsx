@@ -7,12 +7,9 @@ import ProfilePic from "../components/ProfilePic";
 import Dot from "../components/Utils/Dot";
 import Menu from "../components/Navigation/Menu";
 import PageWithNavBar from "../components/Navigation/PageWithNavBar";
+import { useIsDesktopOrDesktopWide } from "../utils/responsive";
 
 const useStyles = makeStyles(() => ({
-  page: {
-    background: `${DARK_NAVY}`,
-    minHeight: "100vh",
-  },
   text: {
     color: "white",
     maxWidth: "600px",
@@ -65,49 +62,58 @@ const Skills = (props: { skills: string[] }): JSX.Element => {
 export default function Index() {
   const classes = useStyles();
 
+  const isAtleastDesktop = useIsDesktopOrDesktopWide();
+
   return (
     <PageWithNavBar>
-      <Box pt={8} pb={16} display="flex" justifyContent="center">
-        <ProfilePic />
-      </Box>
-      <Box
-        display="flex"
-        justifyContent="center"
-        fontFamily="anton,Roboto,Arial"
-        fontSize="100px"
-        color="primary.main"
-      >
-        WELCOME
-      </Box>
-      <Box display="flex" justifyContent="center" textAlign="center">
-        <Typography className={classes.text} variant="h5">
-          I have built and managed modern tech stacks from top to bottom:
-        </Typography>
-      </Box>
-      <Box
-        mt={4}
-        width="100%"
-        color="white"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        <Skills
-          skills={[
-            "Web",
-            "iOS",
-            "Backend",
-            "Project mgmt",
-            "Devops",
-            "Design",
-            "Engineering mgmt",
-          ]}
-        />
-      </Box>
-      <Box my={8} display="flex" justifyContent="center" textAlign="center">
-        <Button color="primary" variant="contained">
-          Download CV
-        </Button>
+      <Box minHeight="100vh">
+        <Box
+          pt={8}
+          pb={isAtleastDesktop ? 16 : 8}
+          display="flex"
+          justifyContent="center"
+        >
+          <ProfilePic size={isAtleastDesktop ? 100 : 60} />
+        </Box>
+        <Box
+          display="flex"
+          justifyContent="center"
+          fontFamily="anton,Roboto,Arial"
+          fontSize={isAtleastDesktop ? 100 : 50}
+          color="primary.main"
+        >
+          WELCOME
+        </Box>
+        <Box display="flex" justifyContent="center" textAlign="center">
+          <Typography className={classes.text} variant="h5">
+            I have built and managed modern tech stacks from top to bottom:
+          </Typography>
+        </Box>
+        <Box
+          mt={4}
+          width="100%"
+          color="white"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Skills
+            skills={[
+              "Web",
+              "iOS",
+              "Backend",
+              "Project mgmt",
+              "Devops",
+              "Design",
+              "Engineering mgmt",
+            ]}
+          />
+        </Box>
+        <Box my={8} display="flex" justifyContent="center" textAlign="center">
+          <Button color="primary" variant="contained">
+            Download CV
+          </Button>
+        </Box>
       </Box>
     </PageWithNavBar>
   );
