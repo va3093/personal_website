@@ -5,6 +5,8 @@ import { ReactElement } from "react";
 import Home from "@material-ui/icons/Home";
 import FormatColorTextIcon from "@material-ui/icons/FormatColorText";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
+import { withRouter } from "next/router";
+import { WithRouterProps } from "next/dist/client/with-router";
 
 export const MENU_WIDTH = "200px";
 
@@ -42,23 +44,34 @@ export const navItems: NavItem[] = [
   },
 ];
 
-const MenuItems = (): ReactElement => {
-  return (
-    <Box display="flex" flexDirection="column">
-      {navItems.map((item) => {
-        return (
-          <Box color="white" width="120px" m={2} key={item.key}>
-            <Typography variant="h6">
-              <Link href={item.path} color="inherit">
-                {item.label}
-              </Link>
-            </Typography>
-          </Box>
-        );
-      })}
-    </Box>
-  );
-};
+const MenuItems = withRouter(
+  (props: WithRouterProps): ReactElement => {
+    return (
+      <Box display="flex" flexDirection="column">
+        {navItems.map((item) => {
+          return (
+            <Box color="white" width="120px" m={2} key={item.key}>
+              <Typography variant="h6">
+                <Link
+                  href={item.path}
+                  color="inherit"
+                  style={{
+                    textDecoration:
+                      props.router.pathname === item.path
+                        ? "underline"
+                        : "none",
+                  }}
+                >
+                  {item.label}
+                </Link>
+              </Typography>
+            </Box>
+          );
+        })}
+      </Box>
+    );
+  }
+);
 
 export default function Menu(): ReactElement {
   return (
