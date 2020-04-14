@@ -1,4 +1,4 @@
-import React, { ReactNode, ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { useMediaQuery } from "react-responsive";
 
 export type DeviceType =

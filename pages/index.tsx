@@ -1,17 +1,11 @@
-import Link from "next/link";
-import Header from "../components/Header";
+import React, { ReactElement } from "react";
 import { Button, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { DARK_NAVY } from "../src/theme";
 import ProfilePic from "../components/ProfilePic";
 import Dot from "../components/Utils/Dot";
-import Menu from "../components/Navigation/Menu";
 import PageWithNavBar from "../components/Navigation/PageWithNavBar";
 import { useIsDesktopOrDesktopWide } from "../utils/responsive";
-import { useSelector, connect } from "react-redux";
-import { RootState } from "../store";
-import { AppContext } from "next/app";
-import { ReduxWrapperAppProps } from "next-redux-wrapper";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(() => ({
   text: {
@@ -63,13 +57,9 @@ const Skills = (props: { skills: string[] }): JSX.Element => {
   );
 };
 
-interface StoreProps {}
+type PageProps = {};
 
-interface DispatchProps {}
-
-type PageProps = StoreProps & DispatchProps;
-
-function Index(props: PageProps) {
+export function Index(): ReactElement {
   const classes = useStyles();
 
   const isAtleastDesktop = useIsDesktopOrDesktopWide();
@@ -126,7 +116,6 @@ function Index(props: PageProps) {
             href="/cv.pdf"
             download
             variant="contained"
-            onClick={() => {}}
           >
             Download CV
           </Button>
@@ -136,7 +125,7 @@ function Index(props: PageProps) {
   );
 }
 
-const mapStateToProps = (state: RootState): StoreProps => {
+const mapStateToProps = (): {} => {
   return {};
 };
 

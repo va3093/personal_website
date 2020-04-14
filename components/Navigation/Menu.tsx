@@ -1,20 +1,18 @@
-import "react";
+import React from "react";
 import { Box, Typography, Link } from "@material-ui/core";
 import Dot from "../Utils/Dot";
 import { ReactElement } from "react";
 import Home from "@material-ui/icons/Home";
 import FormatColorTextIcon from "@material-ui/icons/FormatColorText";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
-import { withRouter } from "next/router";
-import { WithRouterProps } from "next/dist/client/with-router";
 
 export const MENU_WIDTH = "200px";
 
-const VerticalLine = (props: { height: string }) => {
+const VerticalLine = (props: { height: string }): ReactElement => {
   return <Box height={props.height} width="2px" bgcolor="primary.main"></Box>;
 };
 
-const Separator = () => {
+const Separator = (): ReactElement => {
   return (
     <Box>
       <VerticalLine height="100px" />
@@ -44,7 +42,7 @@ export const navItems: NavItem[] = [
   },
 ];
 
-const MenuItems = () => {
+const MenuItems = (): ReactElement => {
   return (
     <Box display="flex" flexDirection="column">
       {navItems.map((item) => {
@@ -62,7 +60,7 @@ const MenuItems = () => {
   );
 };
 
-export default function Menu() {
+export default function Menu(): ReactElement {
   return (
     <Box width={MENU_WIDTH} display="flex" flexDirection="row-reverse">
       <Box color="white" display="flex" alignItems="center">

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Button, Box, Typography } from "@material-ui/core";
+import React, { ReactElement } from "react";
+import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DARK_NAVY } from "../../src/theme";
 import { ReactNode } from "react";
@@ -17,7 +17,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function PageWithNavBar(props: { children: ReactNode }) {
+export default function PageWithNavBar(props: {
+  children: ReactNode;
+}): ReactElement {
   const classes = useStyles();
 
   return (

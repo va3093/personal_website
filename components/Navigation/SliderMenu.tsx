@@ -30,7 +30,11 @@ const tabBarItems = (
 ): ReactElement => {
   const elements = items.map((item) => {
     return (
-      <ButtonBase key={item.key} focusRipple onClick={() => onClick(item.path)}>
+      <ButtonBase
+        key={item.key}
+        focusRipple
+        onClick={(): void => onClick(item.path)}
+      >
         <Box
           display="flex"
           flexDirection="column"
@@ -52,9 +56,7 @@ const tabBarItems = (
   return <>{elements}</>;
 };
 
-interface Props extends WithRouterProps {}
-
-function SliderMenu(props: Props) {
+function SliderMenu(props: WithRouterProps): ReactElement {
   const [isOpen, setIsOpen] = React.useState(false);
   const classes = useStyles();
   return (
@@ -68,7 +70,7 @@ function SliderMenu(props: Props) {
       display="flex"
     >
       <IconButton
-        onClick={() => {
+        onClick={(): void => {
           setIsOpen(!isOpen);
         }}
       >
