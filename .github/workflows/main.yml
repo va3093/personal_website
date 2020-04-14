@@ -1,0 +1,35 @@
+name: Asset Model UI CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ./node_modules
+          key: ${{ hashFiles('package-lock.json') }}-asdf
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typescript check
+        run: npx tsc
+
+      - name: Security Audit
+        run: npm audit --production
+
+      - name: Unit tests
+        run: CI=true npm test
