@@ -59,7 +59,7 @@ const Skills = (props: { skills: string[] }): JSX.Element => {
 
 type PageProps = {};
 
-function Index(): ReactElement {
+export function Index(): ReactElement {
   const classes = useStyles();
 
   const isAtleastDesktop = useIsDesktopOrDesktopWide();
