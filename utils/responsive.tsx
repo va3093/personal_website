@@ -62,15 +62,14 @@ export const useDeviceTypes = (): DeviceType[] => {
   if (isNotMobile) {
     deviceTypes.push("not-mobile");
   }
-  console.log(deviceTypes);
   return deviceTypes;
 };
 
 export const Desktop = ({
   children,
 }: {
-  children: ReactNode;
-}): ReactNode | null => {
+  children: ReactElement;
+}): ReactElement | null => {
   const isDesktop = useIsDesktop();
   return isDesktop ? children : null;
 };
@@ -90,32 +89,32 @@ export const AtLeastDesktop = ({
 export const Tablet = ({
   children,
 }: {
-  children: ReactNode;
-}): ReactNode | null => {
+  children: ReactElement;
+}): ReactElement | null => {
   const isTablet = useIsTablet();
   return isTablet ? children : null;
 };
 export const MobileOrTablet = ({
   children,
 }: {
-  children: ReactNode;
-}): ReactNode | null => {
+  children: ReactElement;
+}): ReactElement | null => {
   const isMobileOrTablet = useIsMobileOrTablet();
   return isMobileOrTablet ? children : null;
 };
 export const Mobile = ({
   children,
 }: {
-  children: ReactNode;
-}): ReactNode | null => {
+  children: ReactElement;
+}): ReactElement | null => {
   const isMobile = useIsMobile();
   return isMobile ? children : null;
 };
 export const Default = ({
   children,
 }: {
-  children: ReactNode;
-}): ReactNode | null => {
+  children: ReactElement;
+}): ReactElement | null => {
   const isNotMobile = useIsNotMobile();
   return isNotMobile ? children : null;
 };

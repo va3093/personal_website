@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { DARK_NAVY } from "../../src/theme";
 import { ReactNode } from "react";
 import Menu, { MENU_WIDTH } from "./Menu";
-import { AtLeastDesktop } from "../../utils/responsive";
+import { AtLeastDesktop, MobileOrTablet } from "../../utils/responsive";
+import SliderMenu from "./SliderMenu";
 
 const useStyles = makeStyles(() => ({
   page: {
@@ -46,6 +47,11 @@ export default function PageWithNavBar(props: { children: ReactNode }) {
             <Box flexGrow={3}></Box>
           </>
         </AtLeastDesktop>
+        <MobileOrTablet>
+          <Box position="fixed" bottom="0" right="0">
+            <SliderMenu></SliderMenu>
+          </Box>
+        </MobileOrTablet>
       </Box>
     </>
   );

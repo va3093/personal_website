@@ -1222,7 +1222,7 @@ const theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["crea
       main: "#FF5468"
     },
     secondary: {
-      main: "#19857b"
+      main: "#FCA766"
     },
     error: {
       main: _material_ui_core_colors__WEBPACK_IMPORTED_MODULE_1__["red"].A400

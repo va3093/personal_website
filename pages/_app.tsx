@@ -3,10 +3,18 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
-import { AppProps } from "next/app";
+import { AppProps, AppContext } from "next/app";
+import { Provider } from "react-redux";
+import { createStore, Store } from "redux";
+import withRedux, { MakeStore, ReduxWrapperAppProps } from "next-redux-wrapper";
+import { reducer, RootState } from "../store";
 
-export default function MyApp(props: AppProps) {
-  const { Component, pageProps } = props;
+const makeStore: MakeStore = (initialState: RootState) => {
+  return createStore(reducer, initialState);
+};
+
+function MyApp(props: ReduxWrapperAppProps<RootState>) {
+  const { Component, pageProps, store } = props;
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -28,8 +36,20 @@ export default function MyApp(props: AppProps) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </React.Fragment>
   );
 }
+
+MyApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
+
+  return { pageProps };
+};
+
+export default withRedux(makeStore)(MyApp);

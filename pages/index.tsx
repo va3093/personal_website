@@ -8,6 +8,10 @@ import Dot from "../components/Utils/Dot";
 import Menu from "../components/Navigation/Menu";
 import PageWithNavBar from "../components/Navigation/PageWithNavBar";
 import { useIsDesktopOrDesktopWide } from "../utils/responsive";
+import { useSelector, connect } from "react-redux";
+import { RootState } from "../store";
+import { AppContext } from "next/app";
+import { ReduxWrapperAppProps } from "next-redux-wrapper";
 
 const useStyles = makeStyles(() => ({
   text: {
@@ -22,17 +26,17 @@ const Skills = (props: { skills: string[] }): JSX.Element => {
     if (index % 3 === 0) {
       return acc.concat([
         [
-          <Box width="150px" textAlign="center">
+          <Box key={index} width="150px" textAlign="center">
             <Typography>{skill}</Typography>
           </Box>,
         ],
       ]);
     } else {
       acc[acc.length - 1].push(
-        <Box>
+        <Box key={index + "dot"}>
           <Dot></Dot>
         </Box>,
-        <Box width="150px" textAlign="center">
+        <Box key={index} width="150px" textAlign="center">
           <Typography>{skill}</Typography>
         </Box>
       );
@@ -59,7 +63,13 @@ const Skills = (props: { skills: string[] }): JSX.Element => {
   );
 };
 
-export default function Index() {
+interface StoreProps {}
+
+interface DispatchProps {}
+
+type PageProps = StoreProps & DispatchProps;
+
+function Index(props: PageProps) {
   const classes = useStyles();
 
   const isAtleastDesktop = useIsDesktopOrDesktopWide();
@@ -110,7 +120,14 @@ export default function Index() {
           />
         </Box>
         <Box my={8} display="flex" justifyContent="center" textAlign="center">
-          <Button color="primary" variant="contained">
+          <Button
+            component="a"
+            color="primary"
+            href="/cv.pdf"
+            download
+            variant="contained"
+            onClick={() => {}}
+          >
             Download CV
           </Button>
         </Box>
@@ -118,3 +135,9 @@ export default function Index() {
     </PageWithNavBar>
   );
 }
+
+const mapStateToProps = (state: RootState): StoreProps => {
+  return {};
+};
+
+export default connect(mapStateToProps, {})(Index);

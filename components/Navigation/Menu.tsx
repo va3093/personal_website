@@ -1,6 +1,12 @@
 import "react";
 import { Box, Typography, Link } from "@material-ui/core";
 import Dot from "../Utils/Dot";
+import { ReactElement } from "react";
+import Home from "@material-ui/icons/Home";
+import FormatColorTextIcon from "@material-ui/icons/FormatColorText";
+import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
+import { withRouter } from "next/router";
+import { WithRouterProps } from "next/dist/client/with-router";
 
 export const MENU_WIDTH = "200px";
 
@@ -20,21 +26,32 @@ const Separator = () => {
   );
 };
 
+export interface NavItem {
+  key: string;
+  label: string;
+  path: string;
+  icon: ReactElement;
+}
+
+export const navItems: NavItem[] = [
+  { key: "home", path: "/", label: "Home", icon: <Home /> },
+  { key: "blog", path: "/blog", label: "Blog", icon: <FormatColorTextIcon /> },
+  {
+    key: "contact",
+    path: "/contact",
+    label: "Contact",
+    icon: <PermContactCalendarIcon />,
+  },
+];
+
 const MenuItems = () => {
-  const items: { key: string; label: string }[] = [
-    { key: "home", label: "Home" },
-    { key: "blog", label: "Blog" },
-    { key: "contact", label: "Contact" },
-  ];
-  const preventDefault = (event: React.SyntheticEvent) =>
-    event.preventDefault();
   return (
     <Box display="flex" flexDirection="column">
-      {items.map((item) => {
+      {navItems.map((item) => {
         return (
           <Box color="white" width="120px" m={2} key={item.key}>
             <Typography variant="h6">
-              <Link href="#" onClick={preventDefault} color="inherit">
+              <Link href={item.path} color="inherit">
                 {item.label}
               </Link>
             </Typography>
