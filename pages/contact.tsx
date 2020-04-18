@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { Box, Link } from "@material-ui/core";
-import PageWithNavBar from "../components/Navigation/PageWithNavBar";
+import PageWithNavBar from "../src/components/Navigation/PageWithNavBar";
 import Twitter from "@material-ui/icons/Twitter";
 
 export function ContactPage(): ReactElement {

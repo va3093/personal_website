@@ -44,13 +44,22 @@ export const navItems: NavItem[] = [
   },
 ];
 
+interface Props {
+  textColor?: "light" | "dark";
+}
+
 const MenuItems = withRouter(
-  (props: WithRouterProps): ReactElement => {
+  (props: WithRouterProps & Pick<Props, "textColor">): ReactElement => {
     return (
       <Box display="flex" flexDirection="column">
         {navItems.map((item) => {
           return (
-            <Box color="white" width="120px" m={2} key={item.key}>
+            <Box
+              color={props.textColor === "dark" ? "black" : "white"}
+              width="120px"
+              m={2}
+              key={item.key}
+            >
               <Typography variant="h6">
                 <Link
                   href={item.path}
@@ -73,11 +82,15 @@ const MenuItems = withRouter(
   }
 );
 
-export default function Menu(): ReactElement {
+export default function Menu(props: Props): ReactElement {
   return (
     <Box width={MENU_WIDTH} display="flex" flexDirection="row-reverse">
-      <Box color="white" display="flex" alignItems="center">
-        <MenuItems />
+      <Box
+        color={props.textColor === "dark" ? "black" : "white"}
+        display="flex"
+        alignItems="center"
+      >
+        <MenuItems textColor={props.textColor} />
         <Separator />
       </Box>
     </Box>

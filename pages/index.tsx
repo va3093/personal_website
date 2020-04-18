@@ -1,10 +1,10 @@
 import React, { ReactElement } from "react";
 import { Button, Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import ProfilePic from "../components/ProfilePic";
-import Dot from "../components/Utils/Dot";
-import PageWithNavBar from "../components/Navigation/PageWithNavBar";
-import { useIsDesktopOrDesktopWide } from "../utils/responsive";
+import ProfilePic from "../src/components/ProfilePic";
+import Dot from "../src/components/Utils/Dot";
+import PageWithNavBar from "../src/components/Navigation/PageWithNavBar";
+import { useIsDesktopOrDesktopWide } from "../src/utils/responsive";
 import { connect } from "react-redux";
 
 const useStyles = makeStyles(() => ({

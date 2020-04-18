@@ -1,15 +1,19 @@
 import React, { ReactElement } from "react";
 import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { DARK_NAVY } from "../../src/theme";
+import { DARK_NAVY, OFF_WHITE } from "../../theme";
 import { ReactNode } from "react";
 import Menu, { MENU_WIDTH } from "./Menu";
 import { AtLeastDesktop, MobileOrTablet } from "../../utils/responsive";
 import SliderMenu from "./SliderMenu";
 
+interface StyleProps {
+  bgColor: string;
+}
+
 const useStyles = makeStyles(() => ({
   page: {
-    background: `${DARK_NAVY}`,
+    background: (props: StyleProps): string => props.bgColor,
   },
   text: {
     color: "white",
@@ -17,10 +21,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function PageWithNavBar(props: {
+interface Props {
   children: ReactNode;
-}): ReactElement {
-  const classes = useStyles();
+  backgroundColor?: "light" | "dark";
+}
+
+export default function PageWithNavBar(props: Props): ReactElement {
+  const classes = useStyles({
+    bgColor: props.backgroundColor === "light" ? OFF_WHITE : DARK_NAVY,
+  });
 
   return (
     <>
@@ -35,7 +44,9 @@ export default function PageWithNavBar(props: {
               position="sticky"
               height="100vh"
             >
-              <Menu />
+              <Menu
+                textColor={props.backgroundColor === "light" ? "dark" : "light"}
+              />
             </Box>
           </>
         </AtLeastDesktop>

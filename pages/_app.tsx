@@ -5,13 +5,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import { AppContext } from "next/app";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import withRedux, { MakeStore, ReduxWrapperAppProps } from "next-redux-wrapper";
-import { reducer, RootState } from "../store";
-
-const makeStore: MakeStore = (initialState: RootState) => {
-  return createStore(reducer, initialState);
-};
+import withRedux, { ReduxWrapperAppProps } from "next-redux-wrapper";
+import { makeStore } from "../src/store";
+import { RootState } from "../src/store/types";
 
 function MyApp(props: ReduxWrapperAppProps<RootState>): ReactElement {
   const { Component, pageProps, store } = props;
