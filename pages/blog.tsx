@@ -9,6 +9,8 @@ import { RootState } from "../src/store/types";
 import { connect } from "react-redux";
 import { getBlogsFromStore } from "../src/store/blog";
 import { getBlogSummariesFromStore } from "../src/store/blogSummary";
+import blogSummaries from "../src/data/blogSummaries";
+import BlogSummaryComp from "../src/components/Blogs/BlogSummary";
 
 const BLOGS_PAGE_ID = "blog_page";
 
@@ -38,8 +40,6 @@ export function BlogPage(props: Props): ReactElement {
     props.fetchBlogSummaries();
   }, []);
 
-  console.log(props.blogSummary);
-
   return (
     <PageWithNavBar backgroundColor="light">
       <Box
@@ -59,6 +59,15 @@ export function BlogPage(props: Props): ReactElement {
             justifyContent="center"
           >
             <ProfilePic size={isAtleastDesktop ? 100 : 60} />
+          </Box>
+          <Box maxWidth="900px">
+            {blogSummaries.map((blogSummary) => {
+              return (
+                <Box key={blogSummary.id}>
+                  <BlogSummaryComp blogSummary={blogSummary} />
+                </Box>
+              );
+            })}
           </Box>
         </Box>
       </Box>
