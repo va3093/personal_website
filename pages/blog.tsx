@@ -3,11 +3,12 @@ import { Box, makeStyles } from "@material-ui/core";
 import PageWithNavBar from "../src/components/Navigation/PageWithNavBar";
 import { useIsDesktopOrDesktopWide } from "../src/utils/responsive";
 import ProfilePic from "../src/components/ProfilePic";
-import { Blog } from "../src/models/blog";
-import { fetchBlogs } from "../src/api/blogs";
+import { Blog, BlogSummary } from "../src/models/blog";
+import { fetchBlogSummaries } from "../src/api/blogs";
 import { RootState } from "../src/store/types";
 import { connect } from "react-redux";
 import { getBlogsFromStore } from "../src/store/blog";
+import { getBlogSummariesFromStore } from "../src/store/blogSummary";
 
 const BLOGS_PAGE_ID = "blog_page";
 
@@ -19,11 +20,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface DispatchProps {
-  fetchBlogs: () => void;
+  fetchBlogSummaries: () => void;
 }
 
 interface StoreProps {
-  blogs: Blog[] | void;
+  blogSummary: BlogSummary[] | void;
 }
 
 type Props = DispatchProps & StoreProps;
@@ -34,10 +35,10 @@ export function BlogPage(props: Props): ReactElement {
 
   React.useEffect(() => {
     console.log("fetching");
-    props.fetchBlogs();
+    props.fetchBlogSummaries();
   }, []);
 
-  console.log(props.blogs);
+  console.log(props.blogSummary);
 
   return (
     <PageWithNavBar backgroundColor="light">
@@ -66,11 +67,11 @@ export function BlogPage(props: Props): ReactElement {
 }
 
 const mapDispatchToProps: DispatchProps = {
-    fetchBlogs: () => fetchBlogs(BLOGS_PAGE_ID),
+  fetchBlogSummaries: () => fetchBlogSummaries(BLOGS_PAGE_ID),
 };
 
 const mapStateToProps = (store: RootState): StoreProps => ({
-  blogs: getBlogsFromStore(store.blogs, BLOGS_PAGE_ID),
+  blogSummary: getBlogSummariesFromStore(store.blogSummary, BLOGS_PAGE_ID),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogPage);

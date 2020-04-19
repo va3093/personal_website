@@ -4,6 +4,7 @@ import { applyMiddleware } from "redux";
 import { MakeStore } from "next-redux-wrapper";
 import { RootState } from "./types";
 import { reducer as blogReducer } from "./blog";
+import { reducer as blogSummaryReducer } from "./blogSummary";
 import thunk from "redux-thunk";
 
 declare module "typesafe-actions" {
@@ -14,6 +15,7 @@ declare module "typesafe-actions" {
 
 const rootReducer = combineReducers<RootState>({
   blogs: blogReducer,
+  blogSummary: blogSummaryReducer,
 });
 
 export const makeStore: MakeStore = (initialState: RootState) => {

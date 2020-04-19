@@ -1,4 +1,5 @@
-import { Blog } from "./../models/blog";
+import { SET_BLOG_SUMMARY_LIST } from "./blogSummary";
+import { Blog, BlogSummary } from "./../models/blog";
 import { SET_BLOGS_LIST } from "./../store/blog";
 import { ThunkAction } from "redux-thunk";
 
@@ -16,6 +17,24 @@ export type BlogActions = SetBlogsListAction;
 export type BlogState = {
   items: {
     [id: string]: ModelIndexItem<Blog>;
+  };
+  lists: Record<string, ModelList>;
+};
+
+// BlogSummary
+
+export interface SetBlogSummaryListAction {
+  type: SET_BLOG_SUMMARY_LIST;
+  payload: {
+    blogs: BlogSummary[];
+    listId: string;
+  };
+}
+
+export type BlogSummaryActions = SetBlogSummaryListAction;
+export type BlogSummaryState = {
+  items: {
+    [id: string]: ModelIndexItem<BlogSummary>;
   };
   lists: Record<string, ModelList>;
 };
@@ -41,10 +60,12 @@ export interface Action<Type, Payload> {
   payload: Payload;
 }
 
-export type AllActions = BlogActions;
-export type AllActionsTypes = BlogActions["type"];
+export type AllActions = BlogActions | BlogSummaryActions;
 
-export type RootState = { blogs: BlogState };
+export type RootState = {
+  blogs: BlogState;
+  blogSummary: BlogSummaryState;
+};
 
 declare module "typesafe-actions" {
   interface Types {

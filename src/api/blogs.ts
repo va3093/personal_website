@@ -1,15 +1,15 @@
-import { setBlogsList } from "./../store/blog";
+import { setBlogSummaryList } from "./../store/blogSummary";
+import { BlogSummary } from "./../models/blog";
 import { ThunkResult } from "../store/types";
-import { Blog } from "../models/blog";
+import blogSummaries from "../data/blogSummaries";
 
-export const fetchBlogs = (listId: string): ThunkResult<Promise<void>> => {
+export const fetchBlogSummaries = (
+  listId: string
+): ThunkResult<Promise<void>> => {
   return (dispatch) =>
-    new Promise<Blog[]>((resolve) => {
-      setTimeout(() => {
-        const blogs: Blog[] = [];
-        resolve(blogs);
-      }, 2000);
+    new Promise<BlogSummary[]>((resolve) => {
+      resolve(blogSummaries);
     }).then((blogs) => {
-      dispatch(setBlogsList(listId, blogs));
+      dispatch(setBlogSummaryList(listId, blogs));
     });
 };
