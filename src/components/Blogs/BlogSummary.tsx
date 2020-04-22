@@ -17,6 +17,9 @@ interface StyleProps {
 
 const useStyles = makeStyles(() =>
   createStyles({
+    paper: {
+      cursor: "pointer",
+    },
     heroImage: ({ heroImageUrl }: StyleProps) => ({
       backgroundImage: `url(${heroImageUrl})` || "",
       backgroundSize: "cover",
@@ -33,9 +36,16 @@ const separator = (): ReactElement => {
 
 const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
   const classes = useStyles({ heroImageUrl: blogSummary.heroImageUrl });
+  const [elevation, setElevation] = React.useState(1);
+
   return (
     <Box m={2}>
-      <Paper>
+      <Paper
+        className={classes.paper}
+        elevation={elevation}
+        onMouseOver={() => setElevation(5)}
+        onMouseLeave={() => setElevation(1)}
+      >
         <Box display="flex" flexDirection="column">
           {blogSummary.heroImageUrl && (
             <Box className={classes.heroImage}></Box>
