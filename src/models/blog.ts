@@ -1,3 +1,4 @@
+import { Category } from "./category";
 import { DateType } from "./../api/types";
 import * as t from "io-ts";
 
@@ -22,3 +23,16 @@ export const BlogsSummaryValidator = t.intersection([
 export type BlogSummary = t.TypeOf<typeof BlogsSummaryValidator>;
 
 export type Blog = t.TypeOf<typeof BlogValidator>;
+
+export function stripCategories(blogSummaries: BlogSummary[]): Category[] {
+  const result = Array.from(
+    new Set(
+      blogSummaries.reduce(
+        (acc: string[], blog: BlogSummary) => acc.concat(blog.categories),
+        []
+      )
+    )
+  ).map((cat) => ({ id: cat, displayName: cat }));
+  console.log(result);
+  return result;
+}

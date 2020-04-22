@@ -9,9 +9,10 @@ import PageWithBumpers from "../Utils/PageWithBumpers";
 interface Props {
   children: ReactNode;
   backgroundColor?: "light" | "dark";
+  rightBumber: ReactElement;
 }
 
-export default function PageWithNavBar(props: Props): ReactElement {
+export default function PageWithNavBarAndRightMenu(props: Props): ReactElement {
   return (
     <>
       <PageWithBumpers
@@ -22,6 +23,7 @@ export default function PageWithNavBar(props: Props): ReactElement {
             textColor={props.backgroundColor === "light" ? "dark" : "light"}
           />
         }
+        rightBumber={props.rightBumber}
       >
         {props.children}
       </PageWithBumpers>

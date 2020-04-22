@@ -11,20 +11,37 @@ export interface Props {
   blogSummary: BlogSummary;
 }
 
-const useStyles = makeStyles(() => createStyles({}));
+interface StyleProps {
+  heroImageUrl?: string;
+}
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    heroImage: ({ heroImageUrl }: StyleProps) => ({
+      backgroundImage: `url(${heroImageUrl})` || "",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      width: "100%",
+      height: "170px",
+    }),
+  })
+);
 
 const separator = (): ReactElement => {
   return <Box height="1px" bgcolor="text.secondary"></Box>;
 };
 
 const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
-  const classes = useStyles();
+  const classes = useStyles({ heroImageUrl: blogSummary.heroImageUrl });
   return (
     <Box m={2}>
       <Paper>
         <Box display="flex" flexDirection="column">
-          <Box p={2}>
-            <Typography variant="h5">{blogSummary.title}</Typography>
+          {blogSummary.heroImageUrl && (
+            <Box className={classes.heroImage}></Box>
+          )}
+          <Box px={2} py={3}>
+            <Typography variant="h4">{blogSummary.title}</Typography>
           </Box>
           <Box mx={2}>{separator()}</Box>
           <Box m={2}>

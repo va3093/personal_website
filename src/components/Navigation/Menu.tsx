@@ -14,7 +14,7 @@ const VerticalLine = (props: { height: string }): ReactElement => {
   return <Box height={props.height} width="2px" bgcolor="primary.main"></Box>;
 };
 
-const Separator = (): ReactElement => {
+export const Separator = (): ReactElement => {
   return (
     <Box>
       <VerticalLine height="100px" />

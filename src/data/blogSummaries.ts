@@ -10,7 +10,16 @@ const blogSummaries: BlogSummary[] = [
     createdAt: new Date(2001, 2, 2),
   },
   {
-    id: "blog1",
+    id: "blog2",
+    title: "Why finding good people is hard",
+    categories: ["recruitment", "management"],
+    summary:
+      "Lorem ipsum dolor sit amet, ex nam legendos volutpat. Eos id facer aperiam, no vix cibo novum sapientem. Veri placerat cum et, et his purto eius sapientem. His eirmod conceptam cu, munere ocurreret delicatissimi ex nam, at appetere deserunt sensibus sea. Quis elitr laoreet cum ea, per ex epicurei definitionem, pro scripta viderer ut….",
+    createdAt: new Date(2001, 2, 2),
+    heroImageUrl: "heroImages/corona.png",
+  },
+  {
+    id: "blog3",
     title: "Why finding good people is hard",
     categories: ["recruitment", "management"],
     summary:
@@ -18,7 +27,7 @@ const blogSummaries: BlogSummary[] = [
     createdAt: new Date(2001, 2, 2),
   },
   {
-    id: "blog1",
+    id: "blog4",
     title: "Why finding good people is hard",
     categories: ["recruitment", "management"],
     summary:
@@ -26,7 +35,7 @@ const blogSummaries: BlogSummary[] = [
     createdAt: new Date(2001, 2, 2),
   },
   {
-    id: "blog1",
+    id: "blog5",
     title: "Why finding good people is hard",
     categories: ["recruitment", "management"],
     summary:
@@ -34,15 +43,7 @@ const blogSummaries: BlogSummary[] = [
     createdAt: new Date(2001, 2, 2),
   },
   {
-    id: "blog1",
-    title: "Why finding good people is hard",
-    categories: ["recruitment", "management"],
-    summary:
-      "Lorem ipsum dolor sit amet, ex nam legendos volutpat. Eos id facer aperiam, no vix cibo novum sapientem. Veri placerat cum et, et his purto eius sapientem. His eirmod conceptam cu, munere ocurreret delicatissimi ex nam, at appetere deserunt sensibus sea. Quis elitr laoreet cum ea, per ex epicurei definitionem, pro scripta viderer ut….",
-    createdAt: new Date(2001, 2, 2),
-  },
-  {
-    id: "blog1",
+    id: "blog6",
     title: "Why finding good people is hard",
     categories: ["recruitment", "management"],
     summary:
