@@ -6,9 +6,10 @@ import {
   CONTENT_FONT_WEIGHT_BODY1,
   CONTENT_LINE_HEIGHT_BODY1,
 } from "../../theme";
+import MarkdownParser from "../../components/Utils/MarkdownParser";
 
 export interface Props {
-  children: ReactNode;
+  content: string;
 }
 
 const BlogContent: React.FC<Props> = (props) => {
@@ -19,7 +20,7 @@ const BlogContent: React.FC<Props> = (props) => {
       fontSize={CONTENT_FONT_SIZE_BODY1}
       lineHeight={CONTENT_LINE_HEIGHT_BODY1}
     >
-      {props.children}
+      <MarkdownParser content={props.content}></MarkdownParser>
     </Box>
   );
 };

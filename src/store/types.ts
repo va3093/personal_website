@@ -1,6 +1,6 @@
 import { SET_BLOG_SUMMARY_LIST } from "./blogSummary";
 import { Blog, BlogSummary } from "./../models/blog";
-import { SET_BLOGS_LIST } from "./../store/blog";
+import { SET_BLOGS_LIST, UPDATE_BLOG } from "./../store/blog";
 import { ThunkAction } from "redux-thunk";
 
 // Blogs
@@ -13,7 +13,12 @@ export interface SetBlogsListAction {
   };
 }
 
-export type BlogActions = SetBlogsListAction;
+export interface UpdateBlogAction {
+  type: UPDATE_BLOG;
+  payload: Blog;
+}
+
+export type BlogActions = SetBlogsListAction | UpdateBlogAction;
 export type BlogState = {
   items: {
     [id: string]: ModelIndexItem<Blog>;

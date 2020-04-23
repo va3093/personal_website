@@ -3,14 +3,17 @@ import fetch from "isomorphic-unfetch";
 import * as t from "io-ts";
 import { JSONified } from "./types";
 
-interface ApiRequestParams<Model> {
+interface BaseApiRequest {
   method: "GET";
   url: string;
+}
+
+interface JSONApiRequestParams<Model> extends BaseApiRequest {
   parser: t.Type<Model, JSONified<Model>>;
 }
 
-export const makeApiRequest = <Model>(
-  params: ApiRequestParams<Model>
+export const fetchJsonContent = <Model>(
+  params: JSONApiRequestParams<Model>
 ): Promise<Model> => {
   return fetch(params.url, {
     method: params.method,
@@ -24,4 +27,12 @@ export const makeApiRequest = <Model>(
     .then((model) => {
       return model;
     });
+};
+
+export const fetchRawContent = (params: BaseApiRequest): Promise<string> => {
+  return fetch(params.url, {
+    method: params.method,
+  }).then((response) => {
+    return response.text();
+  });
 };

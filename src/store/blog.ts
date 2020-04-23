@@ -3,6 +3,7 @@ import {
   BlogState,
   BlogActions,
   SetBlogsListAction,
+  UpdateBlogAction,
 } from "./types";
 import { createReducer } from "typesafe-actions";
 import { Blog } from "../models/blog";
@@ -20,7 +21,13 @@ export const setBlogsList = (
   payload: { blogs, listId },
 });
 
-// Types
+export const UPDATE_BLOG = "UPDATE_BLOG";
+export type UPDATE_BLOG = typeof UPDATE_BLOG;
+
+export const updateBlog = (blog: Blog): UpdateBlogAction => ({
+  type: UPDATE_BLOG,
+  payload: blog,
+});
 
 // reducer
 

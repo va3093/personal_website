@@ -2,22 +2,24 @@ import { Category } from "./category";
 import { DateType } from "./../api/types";
 import * as t from "io-ts";
 
-const BlogValidator = t.type({
-  id: t.string,
-  content: t.string,
-});
-
 export const BlogsSummaryValidator = t.intersection([
   t.type({
     id: t.string,
     title: t.string,
     categories: t.array(t.string),
     summary: t.string,
-    createdAt: DateType,
+    createdAt: t.string,
   }),
   t.partial({
     heroImageUrl: t.string,
   }),
+]);
+
+const BlogValidator = t.intersection([
+  t.type({
+    content: t.string,
+  }),
+  BlogsSummaryValidator,
 ]);
 
 export type BlogSummary = t.TypeOf<typeof BlogsSummaryValidator>;
@@ -33,6 +35,5 @@ export function stripCategories(blogSummaries: BlogSummary[]): Category[] {
       )
     )
   ).map((cat) => ({ id: cat, displayName: cat }));
-  console.log(result);
   return result;
 }

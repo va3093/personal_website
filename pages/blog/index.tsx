@@ -1,18 +1,18 @@
 import React, { ReactElement } from "react";
 import { Box, makeStyles } from "@material-ui/core";
-import PageWithNavBar from "../src/components/Navigation/PageWithNavBar";
-import { useIsDesktopOrDesktopWide } from "../src/utils/responsive";
-import ProfilePic from "../src/components/ProfilePic";
-import { Blog, BlogSummary, stripCategories } from "../src/models/blog";
-import { fetchBlogSummaries } from "../src/api/blogs";
-import { RootState } from "../src/store/types";
+import PageWithNavBar from "../../src/components/Navigation/PageWithNavBar";
+import { useIsDesktopOrDesktopWide } from "../../src/utils/responsive";
+import ProfilePic from "../../src/components/ProfilePic";
+import { Blog, BlogSummary, stripCategories } from "../../src/models/blog";
+import { fetchBlogSummaries } from "../../src/api/blogs";
+import { RootState } from "../../src/store/types";
 import { connect } from "react-redux";
-import { getBlogsFromStore } from "../src/store/blog";
-import { getBlogSummariesFromStore } from "../src/store/blogSummary";
-import blogSummaries from "../src/data/blogSummaries";
-import BlogSummaryComp from "../src/components/Blogs/BlogSummary";
-import PageWithNavBarAndRightMenu from "../src/components/Navigation/PageWithNavBarAndRightMenu";
-import CategoryMenu from "../src/components/Blogs/CategoryMenu";
+import { getBlogsFromStore } from "../../src/store/blog";
+import { getBlogSummariesFromStore } from "../../src/store/blogSummary";
+import blogSummaries from "../../src/data/blogSummaries";
+import BlogSummaryComp from "../../src/components/Blogs/BlogSummary";
+import PageWithNavBarAndRightMenu from "../../src/components/Navigation/PageWithNavBarAndRightMenu";
+import CategoryMenu from "../../src/components/Blogs/CategoryMenu";
 
 const BLOGS_PAGE_ID = "blog_page";
 
@@ -38,7 +38,6 @@ export function BlogPage(props: Props): ReactElement {
   const isAtleastDesktop = useIsDesktopOrDesktopWide();
 
   React.useEffect(() => {
-    console.log("fetching");
     props.fetchBlogSummaries();
   }, []);
 

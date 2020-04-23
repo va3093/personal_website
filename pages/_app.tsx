@@ -40,12 +40,4 @@ function MyApp(props: ReduxWrapperAppProps<RootState>): ReactElement {
   );
 }
 
-MyApp.getInitialProps = async ({ Component, ctx }: AppContext): Promise<{}> => {
-  const pageProps = Component.getInitialProps
-    ? await Component.getInitialProps(ctx)
-    : {};
-
-  return { pageProps };
-};
-
 export default withRedux(makeStore)(MyApp);

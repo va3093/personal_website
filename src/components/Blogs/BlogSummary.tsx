@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { Paper, Typography, Box } from "@material-ui/core";
+import { Paper, Typography, Box, ButtonBase } from "@material-ui/core";
 import { BlogSummary } from "../../models/blog";
 import moment from "moment";
 import BlogSubText from "./BlogSubText";
@@ -40,27 +40,29 @@ const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
 
   return (
     <Box m={2}>
-      <Paper
-        className={classes.paper}
-        elevation={elevation}
-        onMouseOver={() => setElevation(5)}
-        onMouseLeave={() => setElevation(1)}
-      >
-        <Box display="flex" flexDirection="column">
-          {blogSummary.heroImageUrl && (
-            <Box className={classes.heroImage}></Box>
-          )}
-          <Box px={2} py={3}>
-            <Typography variant="h4">{blogSummary.title}</Typography>
+      <ButtonBase onClick={() => {}} component="div" focusRipple>
+        <Paper
+          className={classes.paper}
+          elevation={elevation}
+          onMouseOver={() => setElevation(5)}
+          onMouseLeave={() => setElevation(1)}
+        >
+          <Box display="flex" flexDirection="column">
+            {blogSummary.heroImageUrl && (
+              <Box className={classes.heroImage}></Box>
+            )}
+            <Box px={2} py={3}>
+              <Typography variant="h4">{blogSummary.title}</Typography>
+            </Box>
+            <Box mx={2}>{separator()}</Box>
+            <Box m={2}>
+              <BlogSubText>{moment().format("D MMM YYYY")}</BlogSubText>
+              <CategoryList categories={blogSummary.categories}></CategoryList>
+              <BlogContent content={blogSummary.summary} />
+            </Box>
           </Box>
-          <Box mx={2}>{separator()}</Box>
-          <Box m={2}>
-            <BlogSubText>{moment().format("D MMM YYYY")}</BlogSubText>
-            <CategoryList categories={blogSummary.categories}></CategoryList>
-            <BlogContent>{blogSummary.summary}</BlogContent>
-          </Box>
-        </Box>
-      </Paper>
+        </Paper>
+      </ButtonBase>
     </Box>
   );
 };
