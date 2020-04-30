@@ -28,18 +28,23 @@ interface DispatchProps {
 }
 
 interface StoreProps {
-  blogSummary: BlogSummary[] | void;
+  blogSummaries: BlogSummary[] | void;
 }
 
 type Props = DispatchProps & StoreProps;
 
-export function BlogPage(props: Props): ReactElement {
+export function BlogPage({
+  blogSummaries = [],
+  ...props
+}: Props): ReactElement {
   const classes = useStyles();
   const isAtleastDesktop = useIsDesktopOrDesktopWide();
 
   React.useEffect(() => {
     props.fetchBlogSummaries();
   }, []);
+
+  console.log(blogSummaries);
 
   return (
     <PageWithNavBarAndRightMenu
@@ -89,7 +94,7 @@ const mapDispatchToProps: DispatchProps = {
 };
 
 const mapStateToProps = (store: RootState): StoreProps => ({
-  blogSummary: getBlogSummariesFromStore(store.blogSummary, BLOGS_PAGE_ID),
+  blogSummaries: getBlogSummariesFromStore(store.blogSummary, BLOGS_PAGE_ID),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogPage);

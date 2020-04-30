@@ -39,3 +39,8 @@ export const DateType = new t.Type<Date, string, unknown>(
     }),
   (date) => date.toISOString()
 );
+
+
+export interface ListResponse<Resource> {
+  data: Resource[];
+}

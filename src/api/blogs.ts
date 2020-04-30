@@ -1,6 +1,8 @@
-import { fetchRawContent } from "./index";
+import { listResponse } from "./../utils/json";
+import { ListResponse } from "./types";
+import { fetchRawContent, fetchJsonContent } from "./index";
 import { setBlogSummaryList } from "./../store/blogSummary";
-import { BlogSummary, Blog } from "./../models/blog";
+import { BlogSummary, Blog, BlogsSummaryValidator } from "./../models/blog";
 import { ThunkResult } from "../store/types";
 import blogSummaries from "../data/blogSummaries";
 import { updateBlog } from "../store/blog";
@@ -8,12 +10,14 @@ import { getSortedPostsData, getBlogPostFromFile } from "../utils/blogs";
 
 export const fetchBlogSummaries = (
   listId: string
-): ThunkResult<Promise<BlogSummary[]>> => {
+): ThunkResult<Promise<ListResponse<BlogSummary>>> => {
   return (dispatch) =>
-    new Promise<BlogSummary[]>((resolve) => {
-      resolve(getSortedPostsData());
+    fetchJsonContent<ListResponse<BlogSummary>>({
+      url: "/api/blogs",
+      method: "GET",
+      parser: listResponse(BlogsSummaryValidator),
     }).then((blogs) => {
-      dispatch(setBlogSummaryList(listId, blogs));
+      dispatch(setBlogSummaryList(listId, blogs.data));
       return blogs;
     });
 };

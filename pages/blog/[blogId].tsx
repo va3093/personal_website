@@ -1,17 +1,11 @@
 import React from "react";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { Blog, BlogSummary } from "../../src/models/blog";
+import { Blog } from "../../src/models/blog";
 import Error from "next/error";
 import { NextPage, GetStaticProps, GetStaticPaths } from "next";
-import { useRouter } from "next/router";
-import blogSummaries from "../../src/data/blogSummaries";
-import { fetchBlogContent } from "../../src/api/blogs";
 import { Box } from "@material-ui/core";
-import fs from "fs";
 import PageWithNavBarAndRightMenu from "../../src/components/Navigation/PageWithNavBarAndRightMenu";
 import ProfilePic from "../../src/components/ProfilePic";
 import { useIsDesktopOrDesktopWide } from "../../src/utils/responsive";
-import path from "path";
 import { getBlogPostFromFile, getSortedPostsData } from "../../src/utils/blogs";
 import FullBlog from "../../src/components/Blogs/FullBlog";
 

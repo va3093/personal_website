@@ -26,7 +26,6 @@ export function getBlogPostFromFile(blogId: string): Blog | undefined {
   } catch (e) {
     return;
   }
-  // Combine the data with the id
 }
 
 export function getSortedPostsData(): BlogSummary[] {
