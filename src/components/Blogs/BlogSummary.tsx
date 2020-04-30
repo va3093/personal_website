@@ -19,6 +19,10 @@ const useStyles = makeStyles(() =>
   createStyles({
     paper: {
       cursor: "pointer",
+      width: "100%",
+    },
+    buttonBase: {
+      width: "100%",
     },
     heroImage: ({ heroImageUrl }: StyleProps) => ({
       backgroundImage: `url(${heroImageUrl})` || "",
@@ -39,8 +43,13 @@ const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
   const [elevation, setElevation] = React.useState(1);
 
   return (
-    <Box m={2}>
-      <ButtonBase onClick={() => {}} component="div" focusRipple>
+    <Box m={2} display="flex">
+      <ButtonBase
+        className={classes.buttonBase}
+        onClick={() => {}}
+        component="div"
+        focusRipple
+      >
         <Paper
           className={classes.paper}
           elevation={elevation}
@@ -56,7 +65,9 @@ const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
             </Box>
             <Box mx={2}>{separator()}</Box>
             <Box m={2}>
-              <BlogSubText>{moment().format("D MMM YYYY")}</BlogSubText>
+              <BlogSubText>
+                {moment(blogSummary.createdAt).format("D MMM YYYY")}
+              </BlogSubText>
               <CategoryList categories={blogSummary.categories}></CategoryList>
               <BlogContent content={blogSummary.summary} />
             </Box>
