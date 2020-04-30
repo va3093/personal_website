@@ -6,6 +6,8 @@ import moment from "moment";
 import BlogSubText from "./BlogSubText";
 import CategoryList from "./CategoryList";
 import BlogContent from "./BlogContent";
+import { useRouter } from "next/router";
+import { useNavigator } from "../../utils/navigation";
 
 export interface Props {
   blogSummary: BlogSummary;
@@ -40,13 +42,20 @@ const separator = (): ReactElement => {
 
 const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
   const classes = useStyles({ heroImageUrl: blogSummary.heroImageUrl });
+  const { push } = useNavigator();
   const [elevation, setElevation] = React.useState(1);
 
   return (
     <Box m={2} display="flex">
       <ButtonBase
         className={classes.buttonBase}
-        onClick={() => {}}
+        onClick={() => {
+          push({
+            id: blogSummary.id,
+            path: `/blog/${blogSummary.id}`,
+            displayName: blogSummary.title,
+          });
+        }}
         component="div"
         focusRipple
       >

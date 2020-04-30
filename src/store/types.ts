@@ -1,7 +1,32 @@
+import {
+  BreadCrumbPathItem,
+  ADD_TO_BREADCRUMBS,
+  REMOVE_FROM_BREADCRUMBS,
+} from "./navigation";
 import { SET_BLOG_SUMMARY_LIST } from "./blogSummary";
 import { Blog, BlogSummary } from "./../models/blog";
 import { SET_BLOGS_LIST, UPDATE_BLOG } from "./../store/blog";
 import { ThunkAction } from "redux-thunk";
+
+// Navigation
+
+export interface AddToBreadCrumbsAction {
+  type: ADD_TO_BREADCRUMBS;
+  payload: BreadCrumbPathItem;
+}
+
+export interface RemoveToBreadCrumbsAction {
+  type: REMOVE_FROM_BREADCRUMBS;
+  payload: null;
+}
+
+export type NavigationActions =
+  | AddToBreadCrumbsAction
+  | RemoveToBreadCrumbsAction;
+
+export type NavigationState = {
+  breadCrumbs: BreadCrumbPathItem[];
+};
 
 // Blogs
 
@@ -70,6 +95,7 @@ export type AllActions = BlogActions | BlogSummaryActions;
 export type RootState = {
   blogs: BlogState;
   blogSummary: BlogSummaryState;
+  navigation: NavigationState;
 };
 
 declare module "typesafe-actions" {
