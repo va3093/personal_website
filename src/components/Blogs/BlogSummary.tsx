@@ -42,7 +42,7 @@ const separator = (): ReactElement => {
 
 const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
   const classes = useStyles({ heroImageUrl: blogSummary.heroImageUrl });
-  const { push } = useNavigator();
+  const { router } = useNavigator();
   const [elevation, setElevation] = React.useState(1);
 
   return (
@@ -50,11 +50,7 @@ const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
       <ButtonBase
         className={classes.buttonBase}
         onClick={() => {
-          push({
-            id: blogSummary.id,
-            path: `/blog/${blogSummary.id}`,
-            displayName: blogSummary.title,
-          });
+          router.push(`/blog/${blogSummary.id}`);
         }}
         component="div"
         focusRipple

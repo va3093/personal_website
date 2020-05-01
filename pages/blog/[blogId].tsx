@@ -8,6 +8,7 @@ import ProfilePic from "../../src/components/ProfilePic";
 import { useIsDesktopOrDesktopWide } from "../../src/utils/responsive";
 import { getBlogPostFromFile, getSortedPostsData } from "../../src/utils/blogs";
 import FullBlog from "../../src/components/Blogs/FullBlog";
+import BreadCrumbs from "../../src/components/Utils/BreadCrumbs";
 
 export interface Props {
   blog?: Blog;
@@ -71,6 +72,9 @@ const BlogPost: NextPage<Props> = ({ blog }) => {
                 width="100%"
                 maxWidth="900px"
               >
+                <Box my={2}>
+                  <BreadCrumbs />
+                </Box>
                 <FullBlog blog={blog}></FullBlog>
               </Box>
             </Box>

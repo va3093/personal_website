@@ -59,7 +59,7 @@ const tabBarItems = (
 
 function SliderMenu(): ReactElement {
   const [isOpen, setIsOpen] = React.useState(false);
-  const { push, currentPath } = useNavigator();
+  const { router, currentPath } = useNavigator();
   const classes = useStyles();
   return (
     <Box
@@ -89,11 +89,7 @@ function SliderMenu(): ReactElement {
         width="100%"
       >
         {tabBarItems(navItems, currentPath, (navItem) => {
-          push({
-            id: navItem.key,
-            path: navItem.path,
-            displayName: navItem.label,
-          });
+          router.push(navItem.path);
         })}
       </Box>
     </Box>
