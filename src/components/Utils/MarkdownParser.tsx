@@ -24,8 +24,15 @@ const H3: React.FC = (props) => (
   </Box>
 );
 const Body: React.FC = (props) => (
-  <Box my={1.5}>
-    <Typography variant="body1">{props.children}</Typography>
+  <Box
+    my={1.5}
+    fontFamily={["Montserrat", "futura-pt", "Roboto", "Arial"].join(",")}
+    fontSize={16}
+    component="p"
+    lineHeight="2em"
+    marginBottom="1.8em"
+  >
+    {props.children}
   </Box>
 );
 const ListItem: React.FC = (props) => (

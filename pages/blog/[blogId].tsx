@@ -79,9 +79,8 @@ const BlogPost: NextPage<Props> = ({ blog }) => {
               <Box
                 mb={8}
                 className={classes.blogWrapper}
-                // px={isAtleastDesktop ? 8 : 2}
                 width="100%"
-                maxWidth="900px"
+                maxWidth="800px"
               >
                 <Box my={2}>
                   <BreadCrumbs />

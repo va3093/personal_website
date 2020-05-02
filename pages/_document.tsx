@@ -26,6 +26,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
             rel="stylesheet"
           ></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+            rel="stylesheet"
+          ></link>
           <style
             type="text/css"
             dangerouslySetInnerHTML={{ __html: mediaStyles }}
