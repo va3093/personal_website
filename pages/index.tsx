@@ -14,18 +14,18 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: "600px",
   },
   profilePicWrapper: {
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       paddingBottom: theme.spacing(16),
     },
-    [theme.breakpoints.down("lg")]: {
+    [theme.breakpoints.down("md")]: {
       paddingBottom: theme.spacing(8),
     },
   },
   welcomWrapper: {
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
       fontSize: 100,
     },
-    [theme.breakpoints.down("lg")]: {
+    [theme.breakpoints.down("md")]: {
       fontSize: 50,
     },
   },
