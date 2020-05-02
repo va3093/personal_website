@@ -26,12 +26,14 @@ export default function PageWithNavBarAndRightMenu(props: Props): ReactElement {
         }
         rightBumber={props.rightBumber}
       >
-        <Media at="sm">
-          <MenuBar />
-        </Media>
-        {props.children}
+        <div>
+          <Media lessThan="md">
+            <MenuBar />
+          </Media>
+          {props.children}
+        </div>
       </PageWithBumpers>
-      <Media lessThan="lg">
+      <Media lessThan="md">
         <Box position="fixed" bottom="0" right="0">
           <SliderMenu></SliderMenu>
         </Box>

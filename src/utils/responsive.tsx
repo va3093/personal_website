@@ -5,10 +5,11 @@ import { createMedia } from "@artsy/fresnel";
 
 export const ResponsiveMedia = createMedia({
   breakpoints: {
-    sm: 0,
-    md: 768,
-    lg: 1024,
-    xl: 1192,
+    xs: 0,
+    sm: 600,
+    md: 960,
+    lg: 1280,
+    xl: 1920,
   },
 });
 

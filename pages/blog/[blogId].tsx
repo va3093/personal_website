@@ -71,7 +71,7 @@ const BlogPost: NextPage<Props> = ({ blog }) => {
               flexDirection="column"
               alignItems="center"
             >
-              <Media greaterThan="lg">
+              <Media greaterThan="sm">
                 <Box pt={8} pb={16} display="flex" justifyContent="center">
                   <ProfilePic size={100} />
                 </Box>

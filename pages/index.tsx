@@ -89,10 +89,10 @@ export function Index(): ReactElement {
           display="flex"
           justifyContent="center"
         >
-          <Media lessThan="lg">
+          <Media lessThan="md">
             <ProfilePic size={60} />
           </Media>
-          <Media greaterThan="lg">
+          <Media greaterThan="sm">
             <ProfilePic size={100} />
           </Media>
         </Box>

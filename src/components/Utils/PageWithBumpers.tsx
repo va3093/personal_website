@@ -34,8 +34,8 @@ export default function PageWithBumpers(props: Props): ReactElement {
 
   return (
     <>
-      <Box display="flex" className={classes.page}>
-        <Media greaterThan="lg">
+      <Box id="bumperWrapper" display="flex" className={classes.page}>
+        <Media greaterThan="sm">
           <>
             <Box flexGrow={3}></Box>
 
@@ -58,7 +58,7 @@ export default function PageWithBumpers(props: Props): ReactElement {
         <Box width="100%" maxWidth="1300px" flexGrow={2}>
           {props.children}
         </Box>
-        <Media greaterThan="lg">
+        <Media greaterThan="sm">
           <>
             {props.rightBumber ? (
               <Box

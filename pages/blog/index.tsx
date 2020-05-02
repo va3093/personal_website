@@ -22,11 +22,13 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: "600px",
   },
   profilePicWrapper: {
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("md")]: {
+      paddingTop: theme.spacing(8),
       paddingBottom: theme.spacing(16),
     },
-    [theme.breakpoints.down("lg")]: {
-      paddingBottom: theme.spacing(8),
+    [theme.breakpoints.down("md")]: {
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(0),
     },
   },
 }));
@@ -64,7 +66,7 @@ export function BlogPage({
       <Box
         width="100%"
         height="100%"
-        minHeight="100vh"
+        // minHeight="100vh"
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -72,16 +74,13 @@ export function BlogPage({
       >
         <Box minHeight="100vh">
           <Box
-            pt={8}
+            // pt={8}
             // pb={isAtleastDesktop ? 16 : 8}
             className={classes.profilePicWrapper}
             display="flex"
             justifyContent="center"
           >
-            <Media lessThan="lg">
-              <ProfilePic size={60} />
-            </Media>
-            <Media greaterThan="lg">
+            <Media greaterThan="sm">
               <ProfilePic size={100} />
             </Media>
           </Box>

@@ -5,6 +5,7 @@ import Menu, { MENU_WIDTH } from "./Menu";
 import SliderMenu from "./SliderMenu";
 import PageWithBumpers from "../Utils/PageWithBumpers";
 import { Media } from "../../utils/responsive";
+import MenuBar from "./MenuBar";
 
 interface Props {
   children: ReactNode;
@@ -23,9 +24,12 @@ export default function PageWithNavBar(props: Props): ReactElement {
           />
         }
       >
+        <Media lessThan="md">
+          <MenuBar />
+        </Media>
         {props.children}
       </PageWithBumpers>
-      <Media lessThan="lg">
+      <Media lessThan="md">
         <Box position="fixed" bottom="0" right="0">
           <SliderMenu></SliderMenu>
         </Box>

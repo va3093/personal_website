@@ -14,6 +14,7 @@ const useStyles = makeStyles(() =>
   createStyles({
     wrapper: {},
     other: {
+      zIndex: 100,
       backgroundColor: OFF_WHITE,
       position: "fixed",
       width: "100vw",
@@ -41,6 +42,8 @@ const MenuBar: React.FC<Props> = (props) => {
   console.log(classes);
   return (
     <>
+      {/* spacer */}
+      <Box id="spacer" height={NAVBAR_HEIGHT} width="100vw"></Box>
       <div className={classes.other}>
         <Box className={classes.backButton}>
           <IconButton
@@ -60,8 +63,6 @@ const MenuBar: React.FC<Props> = (props) => {
         </Box>
         <Box className={classes.rightspace}></Box>
       </div>
-      {/* spacer */}
-      <Box height={NAVBAR_HEIGHT} width="100vw"></Box>
     </>
   );
 };
