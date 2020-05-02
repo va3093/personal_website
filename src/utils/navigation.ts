@@ -1,6 +1,7 @@
 import { useRouter, NextRouter } from "next/router";
 import { RootState } from "./../store/types";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export interface BreadCrumbCollector {
   id: string;
@@ -69,6 +70,13 @@ export const useNavigator = (): Navigator => {
       path: item.path(router.query),
       displayName: item.displayName(storeState, router.query),
     })) || [];
+
+  useEffect(() => {
+    breadCrumbs.forEach((crumb) => {
+      console.log("prefetching " + crumb.path);
+      router.prefetch(crumb.path);
+    });
+  });
 
   return {
     breadCrumbs,

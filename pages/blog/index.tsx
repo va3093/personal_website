@@ -22,11 +22,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     maxWidth: "600px",
   },
   profilePicWrapper: {
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(8),
       paddingBottom: theme.spacing(16),
     },
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       paddingTop: theme.spacing(1),
       paddingBottom: theme.spacing(0),
     },

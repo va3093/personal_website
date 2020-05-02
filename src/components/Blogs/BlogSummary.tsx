@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Paper, Typography, Box, ButtonBase } from "@material-ui/core";
 import { BlogSummary } from "../../models/blog";
@@ -45,12 +45,18 @@ const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
   const { router } = useNavigator();
   const [elevation, setElevation] = React.useState(1);
 
+  const blogUrl = `/blog/${blogSummary.id}`;
+
+  useEffect(() => {
+    router.prefetch(blogUrl);
+  });
+
   return (
     <Box m={2} display="flex">
       <ButtonBase
         className={classes.buttonBase}
         onClick={() => {
-          router.push(`/blog/${blogSummary.id}`);
+          router.push(blogUrl);
         }}
         component="div"
         focusRipple
