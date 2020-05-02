@@ -1,4 +1,3 @@
-import { ListResponse } from "./../api/types";
 import * as t from "io-ts";
 import { JSONified } from "../api/types";
 

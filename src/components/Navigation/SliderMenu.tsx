@@ -9,8 +9,6 @@ import {
 import Hamburger from "@material-ui/icons/ViewHeadline";
 import CloseIcon from "@material-ui/icons/Close";
 import { NavItem, navItems } from "./Menu";
-import { withRouter } from "next/router";
-import { WithRouterProps } from "next/dist/client/with-router";
 import { useNavigator } from "../../utils/navigation";
 
 const useStyles = makeStyles(() => ({

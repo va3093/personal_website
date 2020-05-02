@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
 // interface StoreProps {}
 type Props = {};
 
-export const BreadCrumbs: React.FC<Props> = (props) => {
+export const BreadCrumbs: React.FC<Props> = () => {
   const classes = useStyles();
   const { router, breadCrumbs } = useNavigator();
   const handleBreadcrumbClick = (item: BreadCrumbItem) => (): void => {

@@ -1,5 +1,4 @@
 import { Category } from "./category";
-import { DateType } from "./../api/types";
 import * as t from "io-ts";
 
 export const BlogsSummaryValidator = t.intersection([

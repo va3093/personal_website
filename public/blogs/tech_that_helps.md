@@ -3,6 +3,7 @@ title: "Thoughts on making and impact with technology"
 createdAt: "2015-05-09"
 categories: ["ramblings", "chartiy"]
 summary: "'Tech isn't the solution but should never be the problem.'. "
+heroImageUrl: "/heroImages/techThatHelps.png"
 ---
 
 There are many engineers and programmers out there (like myself) who love what they do but also have this niggling sense that all this stuff in our brains can be put to better use than building quirky apps and shopping websites. We look around the world and with almost any problem we can think of a handful of solutions that only require a bit silicon and some time mashing the keyboard. But a group of us recently got together and discussed the role of tech in addressing local and global issues. This discussion added some spice to thoughts that have been marinating in my mind for a long time.

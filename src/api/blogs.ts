@@ -1,12 +1,11 @@
 import { listResponse } from "./../utils/json";
 import { ListResponse } from "./types";
-import { fetchRawContent, fetchJsonContent } from "./index";
+import { fetchJsonContent } from "./index";
 import { setBlogSummaryList } from "./../store/blogSummary";
 import { BlogSummary, Blog, BlogsSummaryValidator } from "./../models/blog";
 import { ThunkResult } from "../store/types";
-import blogSummaries from "../data/blogSummaries";
 import { updateBlog } from "../store/blog";
-import { getSortedPostsData, getBlogPostFromFile } from "../utils/blogs";
+import { getBlogPostFromFile } from "../utils/blogs";
 
 export const fetchBlogSummaries = (
   listId: string

@@ -6,7 +6,7 @@ import ProfilePic from "../ProfilePic";
 import { useNavigator } from "../../utils/navigation";
 import { OFF_WHITE } from "../../theme";
 
-export interface Props {}
+type Props = {};
 
 const NAVBAR_HEIGHT = "48px";
 
@@ -36,7 +36,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const MenuBar: React.FC<Props> = (props) => {
+const MenuBar: React.FC<Props> = () => {
   const classes = useStyles();
   const { goBack } = useNavigator();
   console.log(classes);

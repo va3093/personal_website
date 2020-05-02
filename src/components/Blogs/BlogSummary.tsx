@@ -6,7 +6,6 @@ import moment from "moment";
 import BlogSubText from "./BlogSubText";
 import CategoryList from "./CategoryList";
 import BlogContent from "./BlogContent";
-import { useRouter } from "next/router";
 import { useNavigator } from "../../utils/navigation";
 
 export interface Props {

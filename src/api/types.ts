@@ -19,10 +19,10 @@ export type JSONified<T> = T extends Array<infer E>
         : E[Key];
     }[]
   : {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       [Key in keyof T]: T[Key] extends Date
         ? string
-        : T[Key] extends t.TypeOf<any>
+        : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        T[Key] extends t.TypeOf<any>
         ? JSONified<T[Key]>
         : T[Key];
     };
@@ -39,7 +39,6 @@ export const DateType = new t.Type<Date, string, unknown>(
     }),
   (date) => date.toISOString()
 );
-
 
 export interface ListResponse<Resource> {
   data: Resource[];
