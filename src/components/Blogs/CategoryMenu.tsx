@@ -1,5 +1,4 @@
 import React from "react";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Box, Typography, Link } from "@material-ui/core";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
@@ -13,10 +12,7 @@ export interface Props extends WithRouterProps {
   textColor?: "light" | "dark";
 }
 
-const useStyles = makeStyles(() => createStyles({}));
-
 const CategoryMenu: React.FC<Props> = (props: Props) => {
-  const classes = useStyles();
   return (
     <Box width={MENU_WIDTH} display="flex" flexDirection="row">
       <Box display="flex" alignItems="center">

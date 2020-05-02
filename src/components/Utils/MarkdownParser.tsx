@@ -50,7 +50,9 @@ const BoldBody: React.FC = (props) => (
   </Typography>
 );
 
-const buildToc = (source: string): ReactElement<HTMLAttributes<unknown>>[] => {
+export const buildToc = (
+  source: string
+): ReactElement<HTMLAttributes<unknown>>[] => {
   const headings: ReactElement<HTMLAttributes<unknown>>[] = [];
   compiler(source, {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
