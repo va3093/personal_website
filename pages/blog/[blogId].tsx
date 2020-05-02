@@ -2,17 +2,30 @@ import React from "react";
 import { Blog } from "../../src/models/blog";
 import Error from "next/error";
 import { NextPage, GetStaticProps, GetStaticPaths } from "next";
-import { Box } from "@material-ui/core";
+import { Box, makeStyles, Theme } from "@material-ui/core";
 import PageWithNavBarAndRightMenu from "../../src/components/Navigation/PageWithNavBarAndRightMenu";
 import ProfilePic from "../../src/components/ProfilePic";
-import { useIsDesktopOrDesktopWide } from "../../src/utils/responsive";
 import { getBlogPostFromFile, getSortedPostsData } from "../../src/utils/blogs";
 import FullBlog from "../../src/components/Blogs/FullBlog";
 import BreadCrumbs from "../../src/components/Utils/BreadCrumbs";
+import { Media } from "../../src/utils/responsive";
 
 export interface Props {
   blog?: Blog;
 }
+
+const useStyles = makeStyles((theme: Theme) => ({
+  blogWrapper: {
+    [theme.breakpoints.up("lg")]: {
+      paddingLeft: theme.spacing(8),
+      paddingRight: theme.spacing(8),
+    },
+    [theme.breakpoints.down("lg")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+    },
+  },
+}));
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const sortedBlogs = getSortedPostsData();
@@ -33,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
 };
 
 const BlogPost: NextPage<Props> = ({ blog }) => {
-  const isAtleastDesktop = useIsDesktopOrDesktopWide();
+  const classes = useStyles();
   return (
     <>
       {!blog && <Error statusCode={404} />}
@@ -58,17 +71,15 @@ const BlogPost: NextPage<Props> = ({ blog }) => {
               flexDirection="column"
               alignItems="center"
             >
-              <Box
-                pt={8}
-                pb={isAtleastDesktop ? 16 : 8}
-                display="flex"
-                justifyContent="center"
-              >
-                <ProfilePic size={isAtleastDesktop ? 100 : 60} />
-              </Box>
+              <Media greaterThan="lg">
+                <Box pt={8} pb={16} display="flex" justifyContent="center">
+                  <ProfilePic size={100} />
+                </Box>
+              </Media>
               <Box
                 mb={8}
-                px={isAtleastDesktop ? 8 : 2}
+                className={classes.blogWrapper}
+                // px={isAtleastDesktop ? 8 : 2}
                 width="100%"
                 maxWidth="900px"
               >

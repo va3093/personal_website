@@ -1,13 +1,13 @@
-import { useRouter, Router, NextRouter } from "next/router";
+import { useRouter, NextRouter } from "next/router";
 import { RootState } from "./../store/types";
 import { useSelector } from "react-redux";
 
 export interface BreadCrumbCollector {
   id: string;
-  path: (query: Record<string, string | string[]>) => string;
+  path: (query: Record<string, string | string[] | undefined>) => string;
   displayName: (
     state: RootState,
-    query: Record<string, string | string[]>
+    query: Record<string, string | string[] | undefined>
   ) => string;
 }
 
@@ -20,12 +20,18 @@ export interface BreadCrumbItem
 export interface Navigator {
   breadCrumbs: BreadCrumbItem[];
   router: NextRouter;
+  goBack: () => void;
   currentPath: string;
 }
 
 // Define the different routes and their bread crumb paths
 
+const homeBreadCrumb: BreadCrumbCollector[] = [
+  { id: "home", displayName: () => "Home", path: () => "/" },
+];
+
 const allBlogsBreadcrumb: BreadCrumbCollector[] = [
+  ...homeBreadCrumb,
   { id: "blog", displayName: () => "Blogs", path: () => "/blog" },
 ];
 const blogPostBreadcrumb: BreadCrumbCollector[] = [
@@ -67,6 +73,10 @@ export const useNavigator = (): Navigator => {
   return {
     breadCrumbs,
     router,
+    goBack: () => {
+      const targetCrumb = breadCrumbs[breadCrumbs.length - 2];
+      router.push(targetCrumb ? targetCrumb.path : router.pathname);
+    },
     currentPath: router.pathname,
   };
 };

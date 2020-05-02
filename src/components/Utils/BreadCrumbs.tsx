@@ -25,7 +25,6 @@ export const BreadCrumbs: React.FC<Props> = (props) => {
   if (breadCrumbs.length <= 1) {
     return <></>;
   }
-  console.log(breadCrumbs);
   return (
     <Breadcrumbs data-testid="breadcrumb" className={classes.link}>
       {breadCrumbs.map((item: BreadCrumbItem) => {

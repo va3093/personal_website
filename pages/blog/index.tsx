@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
-import { Box, makeStyles } from "@material-ui/core";
+import { Box, makeStyles, Theme } from "@material-ui/core";
 import PageWithNavBar from "../../src/components/Navigation/PageWithNavBar";
-import { useIsDesktopOrDesktopWide } from "../../src/utils/responsive";
 import ProfilePic from "../../src/components/ProfilePic";
 import { Blog, BlogSummary, stripCategories } from "../../src/models/blog";
 import { fetchBlogSummaries } from "../../src/api/blogs";
@@ -13,13 +12,22 @@ import blogSummaries from "../../src/data/blogSummaries";
 import BlogSummaryComp from "../../src/components/Blogs/BlogSummary";
 import PageWithNavBarAndRightMenu from "../../src/components/Navigation/PageWithNavBarAndRightMenu";
 import CategoryMenu from "../../src/components/Blogs/CategoryMenu";
+import { Media } from "../../src/utils/responsive";
 
 const BLOGS_PAGE_ID = "blog_page";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   text: {
     color: "white",
     maxWidth: "600px",
+  },
+  profilePicWrapper: {
+    [theme.breakpoints.up("lg")]: {
+      paddingBottom: theme.spacing(16),
+    },
+    [theme.breakpoints.down("lg")]: {
+      paddingBottom: theme.spacing(8),
+    },
   },
 }));
 
@@ -38,13 +46,10 @@ export function BlogPage({
   ...props
 }: Props): ReactElement {
   const classes = useStyles();
-  const isAtleastDesktop = useIsDesktopOrDesktopWide();
 
   React.useEffect(() => {
     props.fetchBlogSummaries();
   }, []);
-
-  console.log(blogSummaries);
 
   return (
     <PageWithNavBarAndRightMenu
@@ -68,11 +73,17 @@ export function BlogPage({
         <Box minHeight="100vh">
           <Box
             pt={8}
-            pb={isAtleastDesktop ? 16 : 8}
+            // pb={isAtleastDesktop ? 16 : 8}
+            className={classes.profilePicWrapper}
             display="flex"
             justifyContent="center"
           >
-            <ProfilePic size={isAtleastDesktop ? 100 : 60} />
+            <Media lessThan="lg">
+              <ProfilePic size={60} />
+            </Media>
+            <Media greaterThan="lg">
+              <ProfilePic size={100} />
+            </Media>
           </Box>
           <Box maxWidth="900px">
             {blogSummaries.map((blogSummary) => {

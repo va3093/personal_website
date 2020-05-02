@@ -1,16 +1,33 @@
 import React, { ReactElement } from "react";
-import { Button, Box, Typography } from "@material-ui/core";
+import { Button, Box, Typography, Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ProfilePic from "../src/components/ProfilePic";
 import Dot from "../src/components/Utils/Dot";
 import PageWithNavBar from "../src/components/Navigation/PageWithNavBar";
-import { useIsDesktopOrDesktopWide } from "../src/utils/responsive";
+// import { useIsDesktopOrDesktopWide } from "../src/utils/responsive";
 import { connect } from "react-redux";
+import { Media } from "../src/utils/responsive";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   text: {
     color: "white",
     maxWidth: "600px",
+  },
+  profilePicWrapper: {
+    [theme.breakpoints.up("lg")]: {
+      paddingBottom: theme.spacing(16),
+    },
+    [theme.breakpoints.down("lg")]: {
+      paddingBottom: theme.spacing(8),
+    },
+  },
+  welcomWrapper: {
+    [theme.breakpoints.up("lg")]: {
+      fontSize: 100,
+    },
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 50,
+    },
   },
 }));
 
@@ -62,24 +79,29 @@ type PageProps = {};
 export function Index(): ReactElement {
   const classes = useStyles();
 
-  const isAtleastDesktop = useIsDesktopOrDesktopWide();
-
   return (
     <PageWithNavBar>
       <Box minHeight="100vh">
         <Box
+          className={classes.profilePicWrapper}
           pt={8}
-          pb={isAtleastDesktop ? 16 : 8}
+          // pb={isAtleastDesktop ? 16 : 8}
           display="flex"
           justifyContent="center"
         >
-          <ProfilePic size={isAtleastDesktop ? 100 : 60} />
+          <Media lessThan="lg">
+            <ProfilePic size={60} />
+          </Media>
+          <Media greaterThan="lg">
+            <ProfilePic size={100} />
+          </Media>
         </Box>
         <Box
           display="flex"
           justifyContent="center"
           fontFamily="anton,Roboto,Arial"
-          fontSize={isAtleastDesktop ? 100 : 50}
+          className={classes.welcomWrapper}
+          // fontSize={isAtleastDesktop ? 100 : 50}
           color="primary.main"
         >
           WELCOME

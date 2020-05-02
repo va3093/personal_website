@@ -3,7 +3,7 @@ import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DARK_NAVY, OFF_WHITE } from "../../theme";
 import { ReactNode } from "react";
-import { AtLeastDesktop, MobileOrTablet } from "../../utils/responsive";
+import { Media } from "../../utils/responsive";
 
 interface StyleProps {
   bgColor: string;
@@ -35,7 +35,7 @@ export default function PageWithBumpers(props: Props): ReactElement {
   return (
     <>
       <Box display="flex" className={classes.page}>
-        <AtLeastDesktop>
+        <Media greaterThan="lg">
           <>
             <Box flexGrow={3}></Box>
 
@@ -53,12 +53,12 @@ export default function PageWithBumpers(props: Props): ReactElement {
               <Box width={props.bumperItemWidth}></Box>
             )}
           </>
-        </AtLeastDesktop>
+        </Media>
         {/* <Box width={MENU_WIDTH}></Box> */}
         <Box width="100%" maxWidth="1300px" flexGrow={2}>
           {props.children}
         </Box>
-        <AtLeastDesktop>
+        <Media greaterThan="lg">
           <>
             {props.rightBumber ? (
               <Box
@@ -76,7 +76,7 @@ export default function PageWithBumpers(props: Props): ReactElement {
 
             <Box flexGrow={3}></Box>
           </>
-        </AtLeastDesktop>
+        </Media>
       </Box>
     </>
   );

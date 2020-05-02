@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import withRedux, { ReduxWrapperAppProps } from "next-redux-wrapper";
 import { makeStore } from "../src/store";
 import { RootState } from "../src/store/types";
+import { MediaContextProvider } from "../src/utils/responsive";
 
 function MyApp(props: ReduxWrapperAppProps<RootState>): ReactElement {
   const { Component, pageProps, store } = props;

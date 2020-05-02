@@ -2,9 +2,10 @@ import React, { ReactElement } from "react";
 import { Box } from "@material-ui/core";
 import { ReactNode } from "react";
 import Menu, { MENU_WIDTH } from "./Menu";
-import { MobileOrTablet } from "../../utils/responsive";
+import { Media } from "../../utils/responsive";
 import SliderMenu from "./SliderMenu";
 import PageWithBumpers from "../Utils/PageWithBumpers";
+import MenuBar from "./MenuBar";
 
 interface Props {
   children: ReactNode;
@@ -25,13 +26,16 @@ export default function PageWithNavBarAndRightMenu(props: Props): ReactElement {
         }
         rightBumber={props.rightBumber}
       >
+        <Media at="sm">
+          <MenuBar />
+        </Media>
         {props.children}
       </PageWithBumpers>
-      <MobileOrTablet>
+      <Media lessThan="lg">
         <Box position="fixed" bottom="0" right="0">
           <SliderMenu></SliderMenu>
         </Box>
-      </MobileOrTablet>
+      </Media>
     </>
   );
 }
