@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const sortedBlogs = getSortedPostsData();
 
-  // create paths with `slug` param
   const paths = sortedBlogs.map((blogSummary) => `/blog/${blogSummary.id}`);
   return { paths, fallback: false };
 };
