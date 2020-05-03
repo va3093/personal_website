@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import ProfilePic from "../src/components/ProfilePic";
 import Dot from "../src/components/Utils/Dot";
 import PageWithNavBar from "../src/components/Navigation/PageWithNavBar";
-// import { useIsDesktopOrDesktopWide } from "../src/utils/responsive";
 import { connect } from "react-redux";
 import { Media } from "../src/utils/responsive";
 
@@ -85,7 +84,6 @@ export function Index(): ReactElement {
         <Box
           className={classes.profilePicWrapper}
           pt={8}
-          // pb={isAtleastDesktop ? 16 : 8}
           display="flex"
           justifyContent="center"
         >
@@ -101,7 +99,6 @@ export function Index(): ReactElement {
           justifyContent="center"
           fontFamily="anton,Roboto,Arial"
           className={classes.welcomWrapper}
-          // fontSize={isAtleastDesktop ? 100 : 50}
           color="primary.main"
         >
           WELCOME

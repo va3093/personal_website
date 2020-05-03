@@ -63,7 +63,6 @@ export function BlogPage({
       <Box
         width="100%"
         height="100%"
-        // minHeight="100vh"
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -71,8 +70,6 @@ export function BlogPage({
       >
         <Box minHeight="100vh">
           <Box
-            // pt={8}
-            // pb={isAtleastDesktop ? 16 : 8}
             className={classes.profilePicWrapper}
             display="flex"
             justifyContent="center"

@@ -39,7 +39,6 @@ const useStyles = makeStyles(() =>
 const MenuBar: React.FC<Props> = () => {
   const classes = useStyles();
   const { goBack } = useNavigator();
-  console.log(classes);
   return (
     <>
       {/* spacer */}

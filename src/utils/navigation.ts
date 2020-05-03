@@ -73,7 +73,6 @@ export const useNavigator = (): Navigator => {
 
   useEffect(() => {
     breadCrumbs.forEach((crumb) => {
-      console.log("prefetching " + crumb.path);
       router.prefetch(crumb.path);
     });
   });

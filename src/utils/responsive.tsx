@@ -1,6 +1,3 @@
-// import React, { ReactElement } from "react";
-// import { useMediaQuery } from "react-responsive";
-
 import { createMedia } from "@artsy/fresnel";
 
 export const ResponsiveMedia = createMedia({
