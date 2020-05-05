@@ -7,6 +7,8 @@ import Document, {
 } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import theme from "../src/theme";
+import { mediaStyles, MediaContextProvider } from "../src/utils/responsive";
+
 import { RenderPageResult } from "next/dist/next-server/lib/utils";
 
 export default class MyDocument extends Document {
@@ -24,10 +26,20 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
             rel="stylesheet"
           ></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+            rel="stylesheet"
+          ></link>
+          <style
+            type="text/css"
+            dangerouslySetInnerHTML={{ __html: mediaStyles }}
+          />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+          <MediaContextProvider>
+            <Main />
+            <NextScript />
+          </MediaContextProvider>
         </body>
       </html>
     );

@@ -9,8 +9,7 @@ import {
 import Hamburger from "@material-ui/icons/ViewHeadline";
 import CloseIcon from "@material-ui/icons/Close";
 import { NavItem, navItems } from "./Menu";
-import { withRouter } from "next/router";
-import { WithRouterProps } from "next/dist/client/with-router";
+import { useNavigator } from "../../utils/navigation";
 
 const useStyles = makeStyles(() => ({
   animateOpen: {
@@ -26,14 +25,14 @@ const useStyles = makeStyles(() => ({
 const tabBarItems = (
   items: NavItem[],
   currentPath: string,
-  onClick: (path: string) => void
+  onClick: (navItem: NavItem) => void
 ): ReactElement => {
   const elements = items.map((item) => {
     return (
       <ButtonBase
         key={item.key}
         focusRipple
-        onClick={(): void => onClick(item.path)}
+        onClick={(): void => onClick(item)}
       >
         <Box
           display="flex"
@@ -56,8 +55,9 @@ const tabBarItems = (
   return <>{elements}</>;
 };
 
-function SliderMenu(props: WithRouterProps): ReactElement {
+function SliderMenu(): ReactElement {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { router, currentPath } = useNavigator();
   const classes = useStyles();
   return (
     <Box
@@ -86,12 +86,12 @@ function SliderMenu(props: WithRouterProps): ReactElement {
         justifyContent="space-around"
         width="100%"
       >
-        {tabBarItems(navItems, props.router.pathname, (path) => {
-          props.router.push(path);
+        {tabBarItems(navItems, currentPath, (navItem) => {
+          router.push(navItem.path);
         })}
       </Box>
     </Box>
   );
 }
 
-export default withRouter(SliderMenu);
+export default SliderMenu;

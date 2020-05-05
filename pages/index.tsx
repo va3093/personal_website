@@ -1,16 +1,32 @@
 import React, { ReactElement } from "react";
-import { Button, Box, Typography } from "@material-ui/core";
+import { Button, Box, Typography, Theme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import ProfilePic from "../components/ProfilePic";
-import Dot from "../components/Utils/Dot";
-import PageWithNavBar from "../components/Navigation/PageWithNavBar";
-import { useIsDesktopOrDesktopWide } from "../utils/responsive";
+import ProfilePic from "../src/components/ProfilePic";
+import Dot from "../src/components/Utils/Dot";
+import PageWithNavBar from "../src/components/Navigation/PageWithNavBar";
 import { connect } from "react-redux";
+import { Media } from "../src/utils/responsive";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
   text: {
     color: "white",
     maxWidth: "600px",
+  },
+  profilePicWrapper: {
+    [theme.breakpoints.up("md")]: {
+      paddingBottom: theme.spacing(16),
+    },
+    [theme.breakpoints.down("md")]: {
+      paddingBottom: theme.spacing(8),
+    },
+  },
+  welcomWrapper: {
+    [theme.breakpoints.up("md")]: {
+      fontSize: 100,
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 50,
+    },
   },
 }));
 
@@ -62,24 +78,27 @@ type PageProps = {};
 export function Index(): ReactElement {
   const classes = useStyles();
 
-  const isAtleastDesktop = useIsDesktopOrDesktopWide();
-
   return (
     <PageWithNavBar>
       <Box minHeight="100vh">
         <Box
+          className={classes.profilePicWrapper}
           pt={8}
-          pb={isAtleastDesktop ? 16 : 8}
           display="flex"
           justifyContent="center"
         >
-          <ProfilePic size={isAtleastDesktop ? 100 : 60} />
+          <Media lessThan="md">
+            <ProfilePic size={60} />
+          </Media>
+          <Media greaterThan="sm">
+            <ProfilePic size={100} />
+          </Media>
         </Box>
         <Box
           display="flex"
           justifyContent="center"
           fontFamily="anton,Roboto,Arial"
-          fontSize={isAtleastDesktop ? 100 : 50}
+          className={classes.welcomWrapper}
           color="primary.main"
         >
           WELCOME

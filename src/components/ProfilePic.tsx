@@ -13,5 +13,5 @@ interface Props {
 
 export default function ProfilePic(props: Props): ReactElement {
   const classes = useStyles();
-  return <img className={classes.base} width={props.size} src="profile.png" />;
+  return <img className={classes.base} width={props.size} src="/profile.png" />;
 }
