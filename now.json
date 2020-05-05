@@ -5,7 +5,7 @@
       "use": "@now/next"
     },
     {
-      "src": "lambdas/**/*.ts",
+      "src": "/pages/api/**/*.ts",
       "use": "@now/node",
       "config": {
         "includeFiles": ["data/blogs/*.md"]
