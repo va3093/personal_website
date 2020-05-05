@@ -3,16 +3,8 @@ import { validateJsonSync } from "./json";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import getConfig from "next/config";
 
-const { serverRuntimeConfig } = getConfig();
-
-const postsDirectory = path.join(
-  // serverRuntimeConfig["PROJECT_ROOT"],
-  process.cwd(),
-  "data",
-  "blogs"
-);
+const postsDirectory = path.join(process.cwd(), "data", "blogs");
 
 export function getBlogPostFromFile(blogId: string): Blog | undefined {
   const fullPath = path.join(postsDirectory, `${blogId}.md`);
