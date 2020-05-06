@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 export interface BreadCrumbCollector {
   id: string;
+  route?: string;
   path: (query: Record<string, string | string[] | undefined>) => string;
   displayName: (
     state: RootState,
@@ -39,6 +40,7 @@ const blogPostBreadcrumb: BreadCrumbCollector[] = [
   ...allBlogsBreadcrumb,
   {
     id: "blogPost",
+    route: "/blog/[blogId]",
     displayName: (state: RootState, { blogId }) => {
       const blogSummary = state.blogSummary.items[String(blogId)];
       const blog = state.blogs.items[String(blogId)];
@@ -73,7 +75,7 @@ export const useNavigator = (): Navigator => {
 
   useEffect(() => {
     breadCrumbs.forEach((crumb) => {
-      router.prefetch(crumb.path);
+      router.prefetch(crumb.route || crumb.path, crumb.path);
     });
   });
 
