@@ -23,6 +23,7 @@ export function mockNextUseRouter(props: {
     pathname: props.pathname,
     query: props.query,
     asPath: props.asPath,
+    prefetch: jest.fn(),
   }));
 }
 

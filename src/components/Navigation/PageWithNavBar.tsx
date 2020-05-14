@@ -6,6 +6,7 @@ import SliderMenu from "./SliderMenu";
 import PageWithBumpers from "../Utils/PageWithBumpers";
 import { Media } from "../../utils/responsive";
 import MenuBar from "./MenuBar";
+import { useNavigator } from "../../utils/navigation";
 
 interface Props {
   children: ReactNode;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function PageWithNavBar(props: Props): ReactElement {
+  const { breadCrumbs } = useNavigator();
   return (
     <>
       <PageWithBumpers
@@ -24,9 +26,7 @@ export default function PageWithNavBar(props: Props): ReactElement {
           />
         }
       >
-        <Media lessThan="md">
-          <MenuBar />
-        </Media>
+        <Media lessThan="md">{breadCrumbs.length > 1 && <MenuBar />}</Media>
         {props.children}
       </PageWithBumpers>
       <Media lessThan="md">

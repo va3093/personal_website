@@ -7,6 +7,7 @@ import FormatColorTextIcon from "@material-ui/icons/FormatColorText";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
+import { useNavigator } from "../../utils/navigation";
 
 export const MENU_WIDTH = "200px";
 
@@ -83,6 +84,13 @@ const MenuItems = withRouter(
 );
 
 export default function Menu(props: Props): ReactElement {
+  const { router } = useNavigator();
+  React.useEffect(() => {
+    navItems.forEach((item) => {
+      router.prefetch(item.path, item.path);
+    });
+  });
+
   return (
     <Box width={MENU_WIDTH} display="flex" flexDirection="row-reverse">
       <Box

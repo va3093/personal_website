@@ -47,7 +47,7 @@ const BlogSummaryComponent: React.FC<Props> = ({ blogSummary }) => {
   const blogUrl = `/blog/${blogSummary.id}`;
 
   useEffect(() => {
-    router.prefetch(blogUrl);
+    router.prefetch("/blog/[blogId]", blogUrl);
   });
 
   return (
