@@ -10,8 +10,11 @@ import BlogSummaryComp from "../../src/components/Blogs/BlogSummary";
 import PageWithNavBarAndRightMenu from "../../src/components/Navigation/PageWithNavBarAndRightMenu";
 import CategoryMenu from "../../src/components/Blogs/CategoryMenu";
 import { Media } from "../../src/utils/responsive";
+import { Category } from "../../src/models/category";
+import { useNavigator } from "../../src/utils/navigation";
 
 const BLOGS_PAGE_ID = "blog_page";
+const ALL_CATEGORIES_PAGE_ID = "all_categories";
 
 const useStyles = makeStyles((theme: Theme) => ({
   text: {
@@ -31,11 +34,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 interface DispatchProps {
-  fetchBlogSummaries: () => void;
+  fetchBlogSummaries: (pageId: string, categories?: string[]) => void;
 }
 
 interface StoreProps {
   blogSummaries: BlogSummary[] | void;
+  allCategories: Category[];
 }
 
 type Props = DispatchProps & StoreProps;
@@ -45,9 +49,14 @@ export function BlogPage({
   ...props
 }: Props): ReactElement {
   const classes = useStyles();
+  const navigator = useNavigator();
 
   React.useEffect(() => {
-    props.fetchBlogSummaries();
+    const categories = String(navigator.router.query.categories || "").split(
+      ","
+    );
+    props.fetchBlogSummaries(BLOGS_PAGE_ID, categories);
+    props.fetchBlogSummaries(ALL_CATEGORIES_PAGE_ID);
   }, []);
 
   return (
@@ -55,8 +64,9 @@ export function BlogPage({
       backgroundColor="light"
       rightBumber={
         <CategoryMenu
+          parentPageId={BLOGS_PAGE_ID}
           textColor="dark"
-          categories={stripCategories(blogSummaries)}
+          categories={props.allCategories}
         />
       }
     >
@@ -94,11 +104,16 @@ export function BlogPage({
 }
 
 const mapDispatchToProps: DispatchProps = {
-  fetchBlogSummaries: () => fetchBlogSummaries(BLOGS_PAGE_ID),
+  fetchBlogSummaries: fetchBlogSummaries,
 };
 
 const mapStateToProps = (store: RootState): StoreProps => ({
   blogSummaries: getBlogSummariesFromStore(store.blogSummary, BLOGS_PAGE_ID),
+  allCategories: stripCategories(
+    getBlogSummariesFromStore(store.blogSummary, ALL_CATEGORIES_PAGE_ID) ||
+      getBlogSummariesFromStore(store.blogSummary, BLOGS_PAGE_ID) ||
+      []
+  ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogPage);

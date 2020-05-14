@@ -48,7 +48,8 @@
     "redux-thunk": "^2.3.0",
     "swr": "^0.2.0",
     "ts-jest": "^25.4.0",
-    "typesafe-actions": "^5.1.0"
+    "typesafe-actions": "^5.1.0",
+    "query-string": "^6.9.0"
   },
   "devDependencies": {
     "@types/node": "^13.13.4",

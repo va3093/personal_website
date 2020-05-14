@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Link } from "@material-ui/core";
+import { Box, Typography, Link, makeStyles } from "@material-ui/core";
 import { withRouter } from "next/router";
 import { WithRouterProps } from "next/dist/client/with-router";
 import { Category } from "../../models/category";
@@ -8,11 +8,19 @@ import { strings } from "../../content";
 import Dot from "../Utils/Dot";
 
 export interface Props extends WithRouterProps {
+  parentPageId: string;
   categories: Category[];
   textColor?: "light" | "dark";
 }
+const useStyles = makeStyles(() => ({
+  link: {
+    cursor: "pointer",
+  },
+}));
 
 const CategoryMenu: React.FC<Props> = (props: Props) => {
+  const classes = useStyles();
+
   return (
     <Box width={MENU_WIDTH} display="flex" flexDirection="row">
       <Box display="flex" alignItems="center">
@@ -39,11 +47,12 @@ const CategoryMenu: React.FC<Props> = (props: Props) => {
                     </Box>
                     <Link
                       href={`/blog?categories=${category.id}`}
+                      className={classes.link}
                       color="inherit"
                       style={{
-                        textDecoration: props.router.pathname.includes(
-                          category.id
-                        )
+                        textDecoration: (
+                          props.router.query.categories || ""
+                        ).includes(category.id)
                           ? "underline"
                           : "none",
                       }}

@@ -144,8 +144,6 @@ export function Index(): ReactElement {
   );
 }
 
-
-
 const mapStateToProps = (): {} => {
   return {};
 };
