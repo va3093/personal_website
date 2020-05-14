@@ -71,7 +71,13 @@ const BlogPost: NextPage<Props> = ({ blog }) => {
               alignItems="center"
             >
               <Media greaterThan="sm">
-                <Box pt={8} pb={16} display="flex" justifyContent="center">
+                <Box
+                  pt={8}
+                  pb={16}
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="flex-start"
+                >
                   <ProfilePic size={100} />
                 </Box>
               </Media>
