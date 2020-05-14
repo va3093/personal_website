@@ -1,0 +1,41 @@
+:root {
+  --white: #fbf3f2;
+  --white-60: #fbf3f299; /*99 is 60% in hex*/
+  --orange: #ff991c;
+  --teal: #1c768f;
+  --teal-60: #1c768f99;
+  --seaweed: #304b5a;
+
+  --title-font: "sansation", "Arial", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --paragraph-font: "Montserrat", "sansation", "Arial", Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+html {
+  font-family: var(--paragraph-font);
+  font-size: 8px;
+  color: var(--white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--title-font);
+}
+
+pre,
+code,
+input,
+select,
+textarea {
+  font-family: "Andalé Mono", SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 0.9em;
+}
+
+ol,
+ul {
+  list-style-position: inside;
+}

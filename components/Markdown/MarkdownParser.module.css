@@ -1,0 +1,54 @@
+.h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 3rem 0;
+}
+
+.h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 3rem 0;
+}
+
+.h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2.5rem 0;
+}
+
+.body {
+  margin-top: 2rem;
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat", "sansation", "Arial", Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.listItem {
+  margin-top: 1rem;
+  font-size: 2rem;
+  line-height: 2rem;
+  list-style-type: circle;
+}
+
+.boldBody {
+  font-weight: bold;
+}
+
+.image {
+  max-width: 100%;
+  margin: 3rem auto;
+}
+
+.pre {
+  margin: 3rem 0;
+  width: 100%;
+}
+
+.pre .code {
+  display: block;
+  padding: 2rem;
+  background-color: #ffffff22;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+}

@@ -1,92 +1,28 @@
-import React, { ReactElement } from "react";
-import Document, {
-  Head,
-  Main,
-  NextScript,
-  DocumentInitialProps,
-} from "next/document";
-import { ServerStyleSheets } from "@material-ui/core/styles";
-import theme from "../src/theme";
-import { mediaStyles, MediaContextProvider } from "../src/utils/responsive";
+import Document from "next/document";
+import { DocumentContext } from "next/document";
+import { Head } from "next/document";
+import { Html } from "next/document";
+import { Main } from "next/document";
+import { NextScript } from "next/document";
+import React from "react";
 
-import { RenderPageResult } from "next/dist/next-server/lib/utils";
+// This file is required to customize the root html element.
+// In our case we need to set a lang attribute for all pages.
+export default class extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
 
-export default class MyDocument extends Document {
-  render(): ReactElement {
+  render() {
     return (
-      <html lang="en">
-        <Head>
-          {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
-            rel="stylesheet"
-          ></link>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-            rel="stylesheet"
-          ></link>
-          <style
-            type="text/css"
-            dangerouslySetInnerHTML={{ __html: mediaStyles }}
-          />
-        </Head>
+      <Html lang="en">
+        <Head />
         <body>
-          <MediaContextProvider>
-            <Main />
-            <NextScript />
-          </MediaContextProvider>
+          <Main />
+          <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
-
-MyDocument.getInitialProps = async (ctx): Promise<DocumentInitialProps> => {
-  // Resolution order
-  //
-  // On the server:
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. document.getInitialProps
-  // 4. app.render
-  // 5. page.render
-  // 6. document.render
-  //
-  // On the server with error:
-  // 1. document.getInitialProps
-  // 2. app.render
-  // 3. page.render
-  // 4. document.render
-  //
-  // On the client
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. app.render
-  // 4. page.render
-
-  // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
-
-  ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> =>
-    originalRenderPage({
-      enhanceApp: (App) => (props): React.ReactElement<unknown> =>
-        sheets.collect(<App {...props} />),
-    });
-
-  const initialProps = await Document.getInitialProps(ctx);
-
-  return {
-    ...initialProps,
-    // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement(),
-    ],
-  };
-};

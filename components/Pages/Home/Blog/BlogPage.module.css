@@ -1,0 +1,48 @@
+.blogPage {
+  min-height: 100vh;
+  background-color: var(--seaweed);
+  padding: 0 2rem;
+}
+
+.nav {
+  display: flex;
+  padding: 3rem;
+  width: 100%;
+}
+
+.profilePic {
+  width: 54px;
+  border-radius: 16px;
+}
+
+.heroImage {
+  height: 144px;
+  width: 100%;
+  border-radius: 28px;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.blogPage article {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--white);
+  padding-bottom: 20rem;
+}
+
+.blogTitle {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 800px) {
+  .nav {
+    padding: 3rem 0;
+    justify-content: center;
+  }
+}
