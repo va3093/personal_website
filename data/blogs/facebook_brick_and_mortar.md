@@ -1,7 +1,7 @@
 ---
 title: "What if Facebook was a brick and mortar shop. "
 createdAt: "2018-08-03"
-categories: ["privavacy", "socialMedia"]
+categories: ["privacy", "socialMedia"]
 summary: "If Facebook replaced their servers with humans in order to offer their service, it would still be pretty useful but unbelievably creepy."
 heroImageUrl: "/heroImages/facebookBrickAndMortarHeroImage.png"
 ---

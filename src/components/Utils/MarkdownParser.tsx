@@ -1,6 +1,7 @@
 import React, { ReactElement, HTMLAttributes } from "react";
 import { Typography, Box, createStyles, makeStyles } from "@material-ui/core";
 import Markdown, { compiler } from "markdown-to-jsx";
+import hljs from "highlight.js";
 
 const H1: React.FC = (props) => (
   <Box my={2}>
@@ -103,44 +104,65 @@ const useStyles = makeStyles(() =>
       width: "150px",
       cursor: "pointer",
     },
+    image: {
+      maxWidth: "100%",
+    },
   })
 );
 
 const SimpleMarkdown: React.FC<{ content: string }> = (props) => {
   const classes = useStyles();
+
+  const rootRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (rootRef && rootRef.current) {
+      rootRef.current.querySelectorAll("pre code").forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+    }
+  }, [props.content]);
   return (
-    <Markdown
-      options={{
-        overrides: {
-          h1: {
-            component: H1,
-          },
-          h2: {
-            component: H2,
-          },
-          h3: {
-            component: H3,
-          },
-          p: {
-            component: Body,
-          },
-          li: {
-            component: ListItem,
-          },
-          strong: {
-            component: BoldBody,
-          },
-          a: {
-            component: "a",
-            props: {
-              className: classes.link,
+    <div ref={rootRef}>
+      <Markdown
+        options={{
+          overrides: {
+            h1: {
+              component: H1,
+            },
+            h2: {
+              component: H2,
+            },
+            h3: {
+              component: H3,
+            },
+            p: {
+              component: Body,
+            },
+            li: {
+              component: ListItem,
+            },
+            strong: {
+              component: BoldBody,
+            },
+            a: {
+              component: "a",
+              props: {
+                className: classes.link,
+              },
+            },
+            img: {
+              component: "img",
+              props: {
+                className: classes.image,
+              },
             },
           },
-        },
-      }}
-    >
-      {props.content}
-    </Markdown>
+        }}
+      >
+        {props.content}
+      </Markdown>
+    </div>
   );
 };
 

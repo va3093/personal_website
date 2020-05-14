@@ -1,7 +1,7 @@
 ---
 title: "Thoughts on making and impact with technology"
 createdAt: "2015-05-09"
-categories: ["ramblings", "chartiy"]
+categories: ["ramblings", "charity"]
 summary: "'Tech isn't the solution but should never be the problem.'. "
 heroImageUrl: "/heroImages/techThatHelps.png"
 ---
