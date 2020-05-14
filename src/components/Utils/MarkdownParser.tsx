@@ -103,6 +103,9 @@ const useStyles = makeStyles(() =>
       width: "150px",
       cursor: "pointer",
     },
+    image: {
+      maxWidth: "100%",
+    },
   })
 );
 
@@ -134,6 +137,12 @@ const SimpleMarkdown: React.FC<{ content: string }> = (props) => {
             component: "a",
             props: {
               className: classes.link,
+            },
+          },
+          img: {
+            component: "img",
+            props: {
+              className: classes.image,
             },
           },
         },
