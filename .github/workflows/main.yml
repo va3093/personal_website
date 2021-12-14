@@ -17,7 +17,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ./node_modules
-          key: ${{ hashFiles('package-lock.json') }}-asdf
+          key: ${{ hashFiles('package-lock.json') }}-abc
 
       - name: Install dependencies
         run: npm ci
