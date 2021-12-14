@@ -31,13 +31,13 @@ export default function Home(props: Props): ReactElement {
             <h1>More about me</h1>
             <div className={styles.detailsWrapper}>
               <p>
-                My career: <a href="">LinkdIn</a>
+                My career: <a href="https://www.linkedin.com/in/wilhelmvdwalt/">LinkedIn</a>
               </p>
               <p>
-                Random Banter: <a href="">Twitter</a>
+                Random Banter: <a href="https://twitter.com/wilhelmvdwalt">Twitter</a>
               </p>
               <p>
-                Best way to contact me: <a href="">Twitter</a>
+                Best way to contact me: <a href="https://twitter.com/wilhelmvdwalt">Twitter DM</a>
               </p>
             </div>
           </div>
