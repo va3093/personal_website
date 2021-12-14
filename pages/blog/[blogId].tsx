@@ -2,30 +2,12 @@ import React from "react";
 import { Blog } from "../../src/models/blog";
 import Error from "next/error";
 import { NextPage, GetStaticProps, GetStaticPaths } from "next";
-import { Box, makeStyles, Theme } from "@material-ui/core";
-import PageWithNavBarAndRightMenu from "../../src/components/Navigation/PageWithNavBarAndRightMenu";
-import ProfilePic from "../../src/components/ProfilePic";
-import { getBlogPostFromFile, getSortedPostsData } from "../../src/utils/blogs";
-import FullBlog from "../../src/components/Blogs/FullBlog";
-import BreadCrumbs from "../../src/components/Utils/BreadCrumbs";
-import { Media } from "../../src/utils/responsive";
+import { getBlogPostFromFile, getSortedPostsData } from "lib/blogs/blogs";
+import BlogPage from "components/Pages/Home/Blog/BlogPage";
 
 export interface Props {
   blog?: Blog;
 }
-
-const useStyles = makeStyles((theme: Theme) => ({
-  blogWrapper: {
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing(8),
-      paddingRight: theme.spacing(8),
-    },
-    [theme.breakpoints.down("lg")]: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-    },
-  },
-}));
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const sortedBlogs = getSortedPostsData();
@@ -45,10 +27,10 @@ export const getStaticProps: GetStaticProps<Props> = async (props) => {
 };
 
 const BlogPost: NextPage<Props> = ({ blog }) => {
-  const classes = useStyles();
   return (
     <>
       {!blog && <Error statusCode={404} />}
+<<<<<<< HEAD
       {blog && (
         <PageWithNavBarAndRightMenu
           backgroundColor="light"
@@ -96,6 +78,9 @@ const BlogPost: NextPage<Props> = ({ blog }) => {
           </Box>
         </PageWithNavBarAndRightMenu>
       )}
+=======
+      {blog && <BlogPage blog={blog}></BlogPage>}
+>>>>>>> new-blogs
     </>
   );
 };
