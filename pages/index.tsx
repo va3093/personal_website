@@ -52,7 +52,7 @@ export default function Home(props: Props): ReactElement {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const blogs = getSortedPostsData();
   return {
     props: {
