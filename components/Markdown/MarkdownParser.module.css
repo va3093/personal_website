@@ -40,6 +40,10 @@
   margin: 3rem auto;
 }
 
+.link {
+  color: var(--orange);
+}
+
 .pre {
   margin: 3rem 0;
   width: 100%;
