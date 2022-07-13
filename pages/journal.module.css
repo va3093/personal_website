@@ -4,6 +4,8 @@
   height: 100px;
   background-color: white;
   color: black;
+  padding: 1rem;
+  font-size: 2rem;
 }
 
 .textWrapper {
