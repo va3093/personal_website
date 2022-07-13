@@ -8,7 +8,6 @@ import Editor from "@monaco-editor/react";
 const thoughts = ["how are you", "are you there"];
 
 export default function Journal(): ReactElement {
-  const [val, setVal] = useState("");
   return (
     <>
       <PageHead title="Wilhelm's site" />
