@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import { PageHead } from "components/PageHead/PageHead";
 import styles from "./index.module.css";
 import journalStyles from "./journal.module.css";
