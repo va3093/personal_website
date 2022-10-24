@@ -39,6 +39,7 @@ However if we make a slight modification to the above data model we can get into
 Now, users can comment on comments. This now forms a Directed cyclic graph (DCG). The tree structure formed now is unpredictable making it very hard to query for portions of the comments without doing graph traversals.
 
 Here are some queries that would be very tricky to write against the comments table
+
 - If we deleted a comment how many descendants would also need to be deleted
 - Get me all the comments for a tweet but never show more than 5 children of a comment
 - Get me the first 50 comments by showing the oldest comments and all of its children
