@@ -16,8 +16,8 @@ const BlogList: React.FC<Props> = (props) => {
           <div key={blog.id}>
             <div className={styles.blogContent}>
               <h3 className={cn(styles.blogTitle)}>
-                <Link href={`/blog/${blog.id}`}>
-                  <a className={styles.underline}>{blog.title}</a>
+                <Link className={styles.underline} href={`/blog/${blog.id}`}>
+                  {blog.title}
                 </Link>
               </h3>
               <div className={styles.tags}>

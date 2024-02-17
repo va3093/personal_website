@@ -1,0 +1,10 @@
+/* Color variables */
+
+.page {
+  background-color: var(--cv-dark-green);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--futura);
+}

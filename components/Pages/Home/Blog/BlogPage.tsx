@@ -21,9 +21,7 @@ const BlogPage: React.FC<Props> = ({ blog }) => {
       <main className={styles.blogPage}>
         <nav className={styles.nav}>
           <Link href="/">
-            <a>
-              <img className={styles.profilePic} src="/profile.png" />
-            </a>
+            <img className={styles.profilePic} src="/profile.png" />
           </Link>
         </nav>
         <article>

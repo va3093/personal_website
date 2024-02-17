@@ -7,5 +7,9 @@ import { AppProps } from "next/app";
 export default function App(props: AppProps): ReactElement {
   const { Component, pageProps } = props;
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps} />;
+    </>
+  );
 }
